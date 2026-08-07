@@ -1,0 +1,64 @@
+---
+import type { GetStaticPaths, Page } from 'astro'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import ArticleCard from '../../components/ArticleCard.astro'
+import AdSlot from '../../components/AdSlot.astro'
+import { getPublishedArticles, type ArticleEntry } from '../../utils/articles'
+import { CATEGORIES, ARTICLES_PER_PAGE, getCategoryBySlug } from '../../consts'
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const articles = await getPublishedArticles()
+
+  return CATEGORIES.flatMap((category) => {
+    const categoryArticles = articles.filter((article) => article.data.category === category.name)
+    return paginate(categoryArticles, {
+      params: { category: category.slug },
+      pageSize: ARTICLES_PER_PAGE,
+    })
+  })
+}) satisfies GetStaticPaths
+
+interface Props {
+  page: Page<ArticleEntry>
+}
+
+const { page } = Astro.props as Props
+const categorySlug = Astro.params.category as string
+const categoryInfo = getCategoryBySlug(categorySlug)!
+---
+
+<BaseLayout
+  title={categoryInfo.name}
+  description={categoryInfo.description}
+  breadcrumbs={[{ name: categoryInfo.name, url: `/${categoryInfo.slug}/` }]}
+>
+  <section class="container-page section-padding">
+    <header class="mb-10">
+      <h1 class="text-3xl font-medium text-charcoal-900">{categoryInfo.name}</h1>
+      <p class="mt-2 text-charcoal-500">{categoryInfo.description}</p>
+    </header>
+
+    {page.data.length > 0 ? (
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {page.data.map((article) => <ArticleCard article={article} />)}
+      </div>
+    ) : (
+      <p class="text-charcoal-500">このカテゴリの記事は準備中です。</p>
+    )}
+
+    {(page.url.prev || page.url.next) && (
+      <nav aria-label="ページネーション" class="mt-12 flex justify-center gap-4">
+        {page.url.prev && (
+          <a href={page.url.prev} class="rounded-full border border-greige-300 px-4 py-2 text-sm text-charcoal-700 hover:border-charcoal-500">前のページ</a>
+        )}
+        {page.url.next && (
+          <a href={page.url.next} class="rounded-full border border-greige-300 px-4 py-2 text-sm text-charcoal-700 hover:border-charcoal-500">次のページ</a>
+        )}
+      </nav>
+    )}
+
+    <div class="mt-12">
+      <AdSlot size="leaderboard" />
+    </div>
+  </section>
+</BaseLayout>

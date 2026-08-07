@@ -1,0 +1,132 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import ArticleCard from '../components/ArticleCard.astro'
+import NewsletterCTA from '../components/NewsletterCTA.astro'
+import AdSlot from '../components/AdSlot.astro'
+import {
+  getFeaturedArticles,
+  getLatestArticles,
+  getPopularArticles,
+  getArticlesByCategory,
+} from '../utils/articles'
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts'
+
+const featuredArticles = await getFeaturedArticles(4)
+const latestArticles = await getLatestArticles(6)
+const popularArticles = await getPopularArticles(4)
+const agentsArticles = (await getArticlesByCategory('AI Agents')).slice(0, 3)
+const medicalArticles = (await getArticlesByCategory('Medical AI')).slice(0, 3)
+const weeklyArticles = (await getArticlesByCategory('Weekly AI')).slice(0, 3)
+---
+
+<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <!-- Hero -->
+  <section class="section-padding border-b border-greige-200 bg-ivory-200">
+    <div class="container-page text-center">
+      <p class="mb-4 text-sm font-medium tracking-widest text-charcoal-500">KUSABASE AI LAB</p>
+      <h1 class="mx-auto max-w-2xl text-4xl font-medium leading-tight text-charcoal-900 md:text-5xl">
+        AIを学び、試し、実装する。
+      </h1>
+      <p class="mx-auto mt-6 max-w-xl text-charcoal-500">{SITE_DESCRIPTION}</p>
+      <div class="mt-8 flex justify-center gap-4">
+        <a href="/news/" class="rounded-full bg-charcoal-900 px-6 py-3 text-sm font-medium text-ivory-50 hover:bg-charcoal-700">
+          最新記事を見る
+        </a>
+        <a href="/about/" class="rounded-full border border-greige-400 px-6 py-3 text-sm font-medium text-charcoal-900 hover:border-charcoal-700">
+          About
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {featuredArticles.length > 0 && (
+    <section class="section-padding">
+      <div class="container-page">
+        <h2 class="mb-8 text-2xl font-medium text-charcoal-900">Featured Articles</h2>
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {featuredArticles.map((article) => <ArticleCard article={article} />)}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="section-padding bg-ivory-200">
+    <div class="container-page">
+      <div class="mb-8 flex items-center justify-between">
+        <h2 class="text-2xl font-medium text-charcoal-900">Latest Articles</h2>
+        <a href="/news/" class="text-sm text-charcoal-500 hover:text-charcoal-900">すべて見る →</a>
+      </div>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {latestArticles.map((article) => <ArticleCard article={article} />)}
+      </div>
+    </div>
+  </section>
+
+  {popularArticles.length > 0 && (
+    <section class="section-padding">
+      <div class="container-page">
+        <h2 class="mb-8 text-2xl font-medium text-charcoal-900">Popular Articles</h2>
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {popularArticles.map((article) => <ArticleCard article={article} />)}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {agentsArticles.length > 0 && (
+    <section class="section-padding bg-ivory-200">
+      <div class="container-page">
+        <div class="mb-8 flex items-center justify-between">
+          <h2 class="text-2xl font-medium text-charcoal-900">AI Agents</h2>
+          <a href="/agents/" class="text-sm text-charcoal-500 hover:text-charcoal-900">すべて見る →</a>
+        </div>
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {agentsArticles.map((article) => <ArticleCard article={article} />)}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {medicalArticles.length > 0 && (
+    <section class="section-padding">
+      <div class="container-page">
+        <div class="mb-8 flex items-center justify-between">
+          <h2 class="text-2xl font-medium text-charcoal-900">Medical AI</h2>
+          <a href="/medical-ai/" class="text-sm text-charcoal-500 hover:text-charcoal-900">すべて見る →</a>
+        </div>
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {medicalArticles.map((article) => <ArticleCard article={article} />)}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {weeklyArticles.length > 0 && (
+    <section class="section-padding bg-ivory-200">
+      <div class="container-page">
+        <div class="mb-8 flex items-center justify-between">
+          <h2 class="text-2xl font-medium text-charcoal-900">Weekly AI Summary</h2>
+          <a href="/weekly/" class="text-sm text-charcoal-500 hover:text-charcoal-900">すべて見る →</a>
+        </div>
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {weeklyArticles.map((article) => <ArticleCard article={article} />)}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <NewsletterCTA />
+
+  <section class="section-padding">
+    <div class="container-page grid items-center gap-10 md:grid-cols-2">
+      <div>
+        <h2 class="mb-4 text-2xl font-medium text-charcoal-900">About KusaBase AI Lab</h2>
+        <p class="mb-6 text-charcoal-500">
+          KusaBase AI Labは、AIの最新情報・AIエージェント研究・自動化・開発ログ・医療AI・実践検証を発信する実践型AIメディアです。ニュースの転載ではなく、実際に試し、実装した知見を届けます。
+        </p>
+        <a href="/about/" class="text-sm font-medium text-charcoal-900 underline underline-offset-2">詳しく見る →</a>
+      </div>
+      <AdSlot size="rectangle" />
+    </div>
+  </section>
+</BaseLayout>

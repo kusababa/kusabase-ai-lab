@@ -1,0 +1,30 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro'
+import { getPublishedArticles, getRelatedArticles, getPrevNextArticle, type ArticleEntry } from '../../utils/articles'
+import { getCategoryByName, type CategoryName } from '../../consts'
+
+interface Props {
+  article: ArticleEntry
+}
+
+export async function getStaticPaths() {
+  const articles = await getPublishedArticles()
+
+  return articles.map((article) => {
+    const category = getCategoryByName(article.data.category as CategoryName)
+    return {
+      params: { category: category.slug, slug: article.slug },
+      props: { article },
+    }
+  })
+}
+
+const { article } = Astro.props as Props
+const { Content, headings } = await article.render()
+const relatedArticles = await getRelatedArticles(article)
+const { prev, next } = await getPrevNextArticle(article)
+---
+
+<ArticleLayout article={article} headings={headings} relatedArticles={relatedArticles} prev={prev} next={next}>
+  <Content />
+</ArticleLayout>

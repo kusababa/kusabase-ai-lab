@@ -1,0 +1,20 @@
+---
+import { getCategoryByName, ACCENT_CLASSES, type CategoryName } from '../consts'
+
+interface Props {
+  category: CategoryName
+  size?: 'sm' | 'md'
+}
+
+const { category, size = 'sm' } = Astro.props
+const info = getCategoryByName(category)
+const classes = ACCENT_CLASSES[info.accentKey]
+const sizeClass = size === 'md' ? 'px-3 py-1 text-sm' : 'px-2.5 py-0.5 text-xs'
+---
+
+<a
+  href={`/${info.slug}/`}
+  class={`inline-flex items-center rounded-full border font-medium ${sizeClass} ${classes.text} ${classes.bg} ${classes.border}`}
+>
+  {category}
+</a>

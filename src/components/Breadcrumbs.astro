@@ -1,0 +1,28 @@
+---
+interface BreadcrumbItem {
+  name: string
+  url: string
+}
+
+interface Props {
+  items: BreadcrumbItem[]
+}
+
+const { items } = Astro.props
+const allItems: BreadcrumbItem[] = [{ name: 'ホーム', url: '/' }, ...items]
+---
+
+<nav aria-label="パンくずリスト" class="mb-6 text-sm text-charcoal-500">
+  <ol class="flex flex-wrap items-center gap-1">
+    {allItems.map((item, index) => (
+      <li class="flex items-center gap-1">
+        {index > 0 && <span aria-hidden="true" class="mx-1 text-greige-400">/</span>}
+        {index === allItems.length - 1 ? (
+          <span class="text-charcoal-700" aria-current="page">{item.name}</span>
+        ) : (
+          <a href={item.url} class="hover:text-charcoal-900">{item.name}</a>
+        )}
+      </li>
+    ))}
+  </ol>
+</nav>

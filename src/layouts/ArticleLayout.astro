@@ -1,0 +1,87 @@
+---
+import type { MarkdownHeading } from 'astro'
+import BaseLayout from './BaseLayout.astro'
+import Breadcrumbs from '../components/Breadcrumbs.astro'
+import CategoryBadge from '../components/CategoryBadge.astro'
+import TableOfContents from '../components/TableOfContents.astro'
+import TagList from '../components/TagList.astro'
+import RelatedArticles from '../components/RelatedArticles.astro'
+import PrevNextArticle from '../components/PrevNextArticle.astro'
+import AdSlot from '../components/AdSlot.astro'
+import { calculateReadingTime } from '../utils/readingTime'
+import { getCategoryByName, type CategoryName } from '../consts'
+import type { ArticleEntry } from '../utils/articles'
+
+interface Props {
+  article: ArticleEntry
+  headings: MarkdownHeading[]
+  relatedArticles: ArticleEntry[]
+  prev: ArticleEntry | null
+  next: ArticleEntry | null
+}
+
+const { article, headings, relatedArticles, prev, next } = Astro.props
+const { title, description, publishDate, updatedDate, category, tags, author } = article.data
+const readingTime = calculateReadingTime(article.body)
+const categoryInfo = getCategoryByName(category as CategoryName)
+
+const formattedPublishDate = publishDate.toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' })
+const formattedUpdatedDate = updatedDate?.toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' })
+
+const breadcrumbs = [
+  { name: categoryInfo.name, url: `/${categoryInfo.slug}/` },
+  { name: title, url: `/${categoryInfo.slug}/${article.slug}/` },
+]
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  pageType="article"
+  publishDate={publishDate}
+  updatedDate={updatedDate}
+  keywords={tags}
+  breadcrumbs={breadcrumbs}
+>
+  <article class="container-page section-padding max-w-3xl" data-pagefind-body>
+    <Breadcrumbs items={breadcrumbs} />
+
+    <header class="mb-8">
+      <CategoryBadge category={category as CategoryName} size="md" />
+      <h1 class="mt-4 text-3xl font-medium leading-tight text-charcoal-900 md:text-4xl">{title}</h1>
+      <div class="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-charcoal-500">
+        <span>{author}</span>
+        <span aria-hidden="true">・</span>
+        <time datetime={publishDate.toISOString()}>{formattedPublishDate}</time>
+        {updatedDate && (
+          <>
+            <span aria-hidden="true">・</span>
+            <span>更新: <time datetime={updatedDate.toISOString()}>{formattedUpdatedDate}</time></span>
+          </>
+        )}
+        <span aria-hidden="true">・</span>
+        <span>{readingTime}分で読了</span>
+      </div>
+    </header>
+
+    <TableOfContents headings={headings} />
+
+    <div class="prose-custom">
+      <slot />
+    </div>
+
+    <div class="mt-8">
+      <TagList tags={tags} />
+    </div>
+
+    <div class="mt-10">
+      <AdSlot size="leaderboard" />
+    </div>
+
+    <PrevNextArticle prev={prev} next={next} />
+  </article>
+
+  <div class="container-page max-w-5xl">
+    <RelatedArticles articles={relatedArticles} />
+  </div>
+</BaseLayout>

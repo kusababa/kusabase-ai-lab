@@ -1,0 +1,42 @@
+---
+import { CATEGORIES, SITE_TITLE } from '../consts'
+---
+
+<header class="sticky top-0 z-40 border-b border-greige-200 bg-ivory-100/95 backdrop-blur">
+  <div class="container-page flex h-16 items-center justify-between">
+    <a href="/" class="flex items-center gap-2 text-lg font-medium text-charcoal-900">
+      <img src="/logo.svg" alt={SITE_TITLE} class="h-8 w-auto" />
+    </a>
+
+    <nav class="hidden items-center gap-6 lg:flex" aria-label="カテゴリナビゲーション" data-pagefind-ignore>
+      {CATEGORIES.map((category) => (
+        <a
+          href={`/${category.slug}/`}
+          class="text-sm text-charcoal-700 hover:text-charcoal-900"
+        >
+          {category.name}
+        </a>
+      ))}
+      <a href="/about/" class="text-sm text-charcoal-700 hover:text-charcoal-900">About</a>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a
+        href="/search/"
+        class="rounded-full border border-greige-300 px-4 py-1.5 text-sm text-charcoal-700 hover:border-charcoal-500 hover:text-charcoal-900"
+        aria-label="検索"
+      >
+        検索
+      </a>
+    </div>
+  </div>
+
+  <nav class="container-page flex gap-4 overflow-x-auto border-t border-greige-200 py-2 text-sm lg:hidden" aria-label="カテゴリナビゲーション（モバイル）" data-pagefind-ignore>
+    {CATEGORIES.map((category) => (
+      <a href={`/${category.slug}/`} class="whitespace-nowrap text-charcoal-700 hover:text-charcoal-900">
+        {category.name}
+      </a>
+    ))}
+    <a href="/about/" class="whitespace-nowrap text-charcoal-700 hover:text-charcoal-900">About</a>
+  </nav>
+</header>

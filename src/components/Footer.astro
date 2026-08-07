@@ -1,0 +1,36 @@
+---
+import { CATEGORIES, SITE_TITLE, SITE_DESCRIPTION } from '../consts'
+const year = new Date().getFullYear()
+---
+
+<footer class="mt-24 border-t border-greige-200 bg-ivory-200" data-pagefind-ignore>
+  <div class="container-page grid gap-10 py-16 md:grid-cols-3">
+    <div>
+      <img src="/logo.svg" alt={SITE_TITLE} class="mb-4 h-8 w-auto" />
+      <p class="max-w-xs text-sm text-charcoal-500">{SITE_DESCRIPTION}</p>
+    </div>
+
+    <div>
+      <h2 class="mb-3 text-sm font-medium text-charcoal-900">カテゴリ</h2>
+      <ul class="space-y-2 text-sm">
+        {CATEGORIES.map((category) => (
+          <li><a href={`/${category.slug}/`} class="text-charcoal-500 hover:text-charcoal-900">{category.name}</a></li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="mb-3 text-sm font-medium text-charcoal-900">サイト</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/about/" class="text-charcoal-500 hover:text-charcoal-900">About KusaBase AI Lab</a></li>
+        <li><a href="/search/" class="text-charcoal-500 hover:text-charcoal-900">検索</a></li>
+        <li><a href="/rss.xml" class="text-charcoal-500 hover:text-charcoal-900">RSSフィード</a></li>
+        <li><a href="https://kusabase.com" class="text-charcoal-500 hover:text-charcoal-900" rel="noopener">運営: KusaBase コーポレートサイト</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="border-t border-greige-300 py-6">
+    <p class="container-page text-xs text-charcoal-500">&copy; {year} KusaBase. All rights reserved.</p>
+  </div>
+</footer>

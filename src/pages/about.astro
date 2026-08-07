@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+
+const futureAgents = [
+  { name: '問い合わせAI', description: '各種お問い合わせに自動応答するAIエージェント。' },
+  { name: '医療向けAI', description: '医療分野に特化した情報提供・相談支援AI。' },
+  { name: 'LINE対応AI', description: 'LINE上で利用できる会話型AIエージェント。' },
+]
+---
+
+<BaseLayout
+  title="About"
+  description="KusaBase AI Labのコンセプトと運営方針について。"
+  breadcrumbs={[{ name: 'About', url: '/about/' }]}
+>
+  <section class="container-page section-padding max-w-3xl">
+    <h1 class="mb-6 text-3xl font-medium text-charcoal-900">About KusaBase AI Lab</h1>
+
+    <p class="mb-4 text-charcoal-500">
+      KusaBase AI Labは「AIを学び、試し、実装する。」をコンセプトに掲げる実践型AIメディアです。
+      海外ニュースの転載ではなく、AI最新情報・AIエージェント研究・自動化・開発ログ・医療AI・実践検証といった
+      領域について、実際に手を動かした知見を発信します。
+    </p>
+    <p class="mb-4 text-charcoal-500">
+      運営はコーポレートサイト <a href="https://kusabase.com" class="underline underline-offset-2" rel="noopener">KusaBase</a> が行っています。
+      KusaBase AI Labは kusabase.com とは独立したメディアサイトとして構築されていますが、KusaBaseが持つ開発・医療分野の知見を土台にしています。
+    </p>
+
+    <h2 class="mb-4 mt-12 text-2xl font-medium text-charcoal-900">今後の展開</h2>
+    <p class="mb-6 text-charcoal-500">
+      将来的には app.kusabase.com にて、以下のAIエージェントの提供を予定しています。
+    </p>
+    <div class="grid gap-4 sm:grid-cols-3">
+      {futureAgents.map((agent) => (
+        <div class="rounded-xl border border-dashed border-greige-400 bg-ivory-200 p-5">
+          <p class="mb-2 text-xs font-medium text-charcoal-300">Coming Soon</p>
+          <h3 class="mb-1 text-base font-medium text-charcoal-900">{agent.name}</h3>
+          <p class="text-sm text-charcoal-500">{agent.description}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,26 @@
+---
+import type { MarkdownHeading } from 'astro'
+
+interface Props {
+  headings: MarkdownHeading[]
+}
+
+const { headings } = Astro.props
+// 記事タイトル（h1）は別途表示されるため、目次はh2・h3のみを対象とする
+const tocHeadings = headings.filter((heading) => heading.depth === 2 || heading.depth === 3)
+---
+
+{tocHeadings.length > 0 && (
+  <nav aria-label="目次" class="mb-10 rounded-xl border border-greige-200 bg-ivory-200 p-5">
+    <p class="mb-3 text-sm font-medium text-charcoal-900">目次</p>
+    <ul class="space-y-1.5 text-sm">
+      {tocHeadings.map((heading) => (
+        <li class={heading.depth === 3 ? 'ml-4' : ''}>
+          <a href={`#${heading.slug}`} class="text-charcoal-500 hover:text-charcoal-900 hover:underline">
+            {heading.text}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+)}

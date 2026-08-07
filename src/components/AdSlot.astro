@@ -1,0 +1,20 @@
+---
+// Google AdSense導入を見込んだ広告表示スペースのプレースホルダー
+// 導入時はこのコンポーネント内にAdSenseのins要素・スクリプトを追加する
+
+interface Props {
+  size?: 'leaderboard' | 'rectangle' | 'inline'
+}
+
+const { size = 'inline' } = Astro.props
+
+const sizeClass = {
+  leaderboard: 'h-24 md:h-28',
+  rectangle: 'h-64 w-full max-w-xs mx-auto',
+  inline: 'h-20',
+}[size]
+---
+
+<div class={`flex items-center justify-center rounded-lg border border-dashed border-greige-400 bg-ivory-200 text-xs text-charcoal-300 ${sizeClass}`}>
+  広告スペース（準備中）
+</div>
