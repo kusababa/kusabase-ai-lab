@@ -1,47 +1,59 @@
 # CLAUDE.md
 
-このファイルはKusaBase AI Labリポジトリで作業する際のガイドラインを記載する。
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## プロジェクト概要
+
+「AIを学び、試し、実装する。」をコンセプトとする実践型AIメディアサイト（[ai.kusabase.com](https://ai.kusabase.com)）。Astro 4の完全SSG構成で構築しており、SSRは使用しない。姉妹サイトのkusabase.com（`C:\Users\hyayj\Developer\portfolio`、別リポジトリ）とデザイン思想・CI/CD構成の統一性を持たせている。
 
 ## コマンド
 
 ```bash
 npm install        # 依存パッケージインストール
 npm run dev         # 開発サーバー（http://localhost:4321）
-npm run build        # 本番ビルド（astro build → pagefind --site dist）
+npm run build        # 本番ビルド（astro build → pagefind --site dist の順に実行）
 npm run preview       # ビルド済みdist/のプレビュー
 ```
 
-検索機能（Pagefind）は `npm run build` 時にのみインデックスが生成されるため、`npm run dev` では動作しない。検索確認は `npm run build && npm run preview` で行うこと。
+lint・テストのコマンドは現時点で未設定（ESLint/Prettier/テストフレームワークいずれも未導入）。
+
+検索機能（Pagefind）は `npm run build` 実行時にのみ `dist/pagefind/` へインデックスが生成されるため、`npm run dev` では動作しない。検索の動作確認は必ず `npm run build && npm run preview` で行うこと。
 
 ## アーキテクチャ
 
-- Astro 4 の完全SSG構成（`output: 'static'`）。SSRは使用しない
-- `trailingSlash: 'always'`、`applyBaseStyles: false`（Tailwindのbase styleは `src/styles/global.css` で手動管理）
-- `.astro` コンポーネントのみを使用し、React/Vue等のUIフレームワーク統合は導入していない
-- 記事は Astro Content Collections（`src/content/articles/*.md`）で管理。スキーマは `src/content/config.ts`
-- カテゴリ⇔URLスラッグの対応、アクセントカラーのTailwindクラス名は `src/consts.ts` に一元管理している。カテゴリを追加・変更する場合はこのファイルと `src/content/config.ts` の `category` enum を同時に更新すること
-- 記事URLは `/{カテゴリスラッグ}/{ファイル名（slug)}/` の形式（例: `/news/openai-next-gen/`）
+- Astro 4の完全SSG構成（`output: 'static'`）。`trailingSlash: 'always'`、`applyBaseStyles: false`（Tailwindのbase styleは `src/styles/global.css` で手動管理）。`.astro` コンポーネントのみを使用し、React/Vue等のUIフレームワーク統合は導入していない
+- **記事データ**: `src/content/config.ts` の `articles` コレクション（type: content）で管理。実データは `src/content/articles/*.md`。frontmatterスキーマ（title/description/publishDate/category/tags/draft/featured/popular/heroImage/author）はこのファイルが正
+- **カテゴリの一元管理**: `src/consts.ts` の `CATEGORIES` にカテゴリ名⇔URLスラッグ⇔Tailwindアクセントカラーキーの対応をまとめている。カテゴリを追加・変更する場合は、このファイルと `src/content/config.ts` の `category` enum を**同時に**更新する必要がある
+- **ルーティング**: 記事詳細は `src/pages/[category]/[slug].astro`、カテゴリ一覧（ページネーション付き）は `src/pages/[category]/[...page].astro`。URL形式は `/{カテゴリスラッグ}/{記事ファイル名}/`（例: `/news/news-1/`）
+- **記事取得ロジックの共通化**: `src/utils/articles.ts` に公開記事の取得・ソート・カテゴリ絞り込み・関連記事・前後記事・タグ集計を集約している。ページ側で `getCollection` を直接叩かず、このモジュール経由で取得すること
+- **読了時間**: `src/utils/readingTime.ts`。英語圏の「単語数÷分速」ではなく、Markdown記法を除去した日本語の文字数を約500文字/分で割って概算する方式
+- **目次（TOC）**: 追加のremarkプラグインは使わず、Astro Content Collectionsの `entry.render()` が返す `headings`（h2/h3のみ抽出）をそのまま利用
+- **レイアウト階層**: `BaseLayout.astro`（Header/Footer/SEO差し込みを含む全ページ共通の外枠）を `ArticleLayout.astro`（パンくず/目次/タグ/広告枠/関連記事/前後記事を含む記事詳細専用レイアウト）が内包する構造
+- **SEO**: `SEO.astro` がcanonical/OGP/Twitter Card/JSON-LD（Article or WebPage、Organization、BreadcrumbList）をまとめて出力。RSSは `@astrojs/rss` を使わず `src/pages/rss.xml.ts` で自前生成
+- **Pagefindの索引範囲**: `data-pagefind-body` を `ArticleLayout.astro` の記事本文ラッパーにのみ付与している。この属性を使うとサイト全体の索引対象が「この属性を持つ要素のみ」に切り替わる仕様のため、検索対象は記事本文に限定され、Header/Footer/About等は索引対象外になる（意図した挙動）
+- **Tailwindアクセントカラー**: JITは完全なクラス名文字列しか検出できないため、`text-accent-${key}` のような動的生成はできない。`src/consts.ts` の `ACCENT_CLASSES` に完全なクラス名を列挙する方式にしている
+- **AIニュース記事下書き自動生成パイプライン**（`scripts/ai-news-pipeline/`）: Astroサイト本体とは独立したNode/TypeScriptスクリプト群。`collect.ts`（ニュース収集）→`score.ts`（Claude Haikuで重要度スコアリング）→`generate.ts`（Claude Sonnetで記事構造をJSON生成し `src/content/config.ts` 相当のZodスキーマで検証後Markdown化）の順で実行され、`npm run pipeline` がエントリポイント。git操作は一切行わず、コミット・PR作成は `.github/workflows/ai-news-pipeline.yml` 側に分離している。完全自動公開はせず、PRを介した人間レビューを必須にする設計。詳細は `docs/ai-news-pipeline.md` を参照
 
-## Key decisions
+## 既知の落とし穴
 
-- **記事URL構造**: `[category]/[slug].astro` の動的ルートを採用。カテゴリ一覧ページ（`[category]/index.astro`）は同じ `[category]` セグメントを使い、Astroの `paginate()` でカテゴリごとにページネーションしている
-- **読了時間の算出方式**: 英語圏で一般的な「単語数÷分速」ではなく、日本語の文字数（Markdown記法を除去した本文の文字数）を約500文字/分で割って概算している（`src/utils/readingTime.ts`）
-- **人気記事（Popular Articles）の選定方法**: 静的サイトのためアクセス解析に基づく自動集計は行わず、frontmatterの `popular: true` で手動指定する運用とした
-- **目次（TOC）の実装**: 追加のremarkプラグインは使わず、Astro Content Collectionsの `entry.render()` が返す `headings`（h2/h3のみ抽出）をそのまま利用している
-- **Pagefindのインデックス範囲**: `src/layouts/ArticleLayout.astro` の記事本文ラッパーにのみ `data-pagefind-body` を付与している。この属性を使うと、Pagefindの索引対象がサイト全体で「この属性を持つ要素のみ」に切り替わる仕様のため、結果として検索対象は記事本文に限定され、Header/Footer/About等のページは索引対象外となる。これは意図した挙動である
-- **RSS**: `@astrojs/rss` は導入せず、`src/pages/rss.xml.ts` で手動生成している
-- **デプロイ方式**: kusabase.com（`C:\Users\hyayj\Developer\portfolio`）のCI/CD構成を踏襲し、GitHub Actionsからアクセスキー方式でAWSへ認証、S3を「長期キャッシュ資産」と「no-cacheのHTML/robots/sitemap/rss/pagefindインデックス」の二段階でsyncした後にCloudFront invalidationを実行する構成とした
+- **`@astrojs/sitemap` はpackage.jsonで `3.2.1` に完全固定**（キャレットを付けない）こと。3.7.x系はAstro 5で追加された `astro:routes:resolved` フックを前提にしており、Astro 4.16では発火しないため `Cannot read properties of undefined (reading 'reduce')` でビルドが壊れる（実際に発生し確認済み）
+- カテゴリ一覧ページは `[category]/index.astro` ではなく **`[category]/[...page].astro`** というファイル名にする必要がある。Astroの `paginate()` はルートパスにページ番号パラメータを含むファイル名を要求するため
+- `scripts/ai-news-pipeline/src/sources.ts` の収集元のうち、Anthropic Newsとxaiは公式RSSが存在しない/bot対策で自動取得できないことを確認済みのため `enabled: false` にしてある。有効化する場合は別途スクレイピング実装が必要
+
+## デプロイ・インフラ
+
+- kusabase.com（`C:\Users\hyayj\Developer\portfolio`）のCI/CD構成を踏襲し、`.github/workflows/deploy.yml` からアクセスキー方式でAWSへ認証、S3を「長期キャッシュ資産」と「no-cacheのHTML/robots/sitemap/rss/pagefindインデックス」の二段階でsyncした後にCloudFront invalidationを実行する
+- AWS側（S3/CloudFront/Route53/ACM）の手動構築手順は `docs/deploy-aws.md` を参照
+- **本番のCloudFront側で、末尾スラッシュURL（`trailingSlash: 'always'` により全ページがこの形式）を `index.html` に補完するCloudFront Functionの設定が別途必要**（CloudFrontの「デフォルトルートオブジェクト」はルート `/` にしか効かず、`/news/` のようなサブパスには適用されないため）。また非公開S3バケット（OAC構成）は存在しないオブジェクトに対して404ではなく403を返すため、カスタムエラーレスポンスは404だけでなく403も `/404.html` にマッピングする必要がある。このCloudFront Function設定手順は `docs/deploy-aws.md` に未反映のため、インフラ構築時は本ファイルの記述もあわせて参照すること
 
 ## デザイン方針
 
 Anthropic風の「落ち着いた高級感」。アイボリー（`ivory.*`）・グレージュ（`greige.*`）を基調とし、テキストはグレースケール（`charcoal.*`）で統一する。カテゴリ別アクセントカラー（`accent.*`）は低彩度で、バッジ・ボーダー・薄い背景（opacity低め）にのみ使用し、大面積の塗りやボタン背景には使わない。過度なアニメーションは禁止し、ホバー時の色変化程度の控えめなトランジションのみ許可する。
 
-TailwindのJIT解析はソースコード中の完全なクラス名文字列しか検出できないため、`text-accent-${key}` のような動的生成は行わず、`src/consts.ts` の `ACCENT_CLASSES` に完全なクラス名を列挙する方式にしている。
+## 未実装・スコープ外
 
-## 未実装・今回のスコープ外
-
-- AWS実リソース（S3/CloudFront/Route53/ACM）の作成（手順は `docs/deploy-aws.md`）
+- AWS実リソースの新規作成は完了済みだが、CloudFront Functionの `docs/deploy-aws.md` への反映は未対応（上記参照）
 - Google AdSenseの実申請・スクリプト組み込み（`AdSlot.astro` はプレースホルダーのみ）
-- ニュースレター配信基盤
-- AI記事自動生成パイプライン（海外ニュース収集→AI要約→Markdown生成→人間レビュー→公開）。完全自動公開は行わない方針
-- app.kusabase.com側のAIエージェント実装
+- ニュースレター配信基盤（`NewsletterCTA.astro` はUIのみの「準備中」表示）
+- app.kusabase.com側のAIエージェント実装（問い合わせAI・医療向けAI・LINE対応AI）
+- AIニュース記事下書き自動生成パイプライン（`scripts/ai-news-pipeline/`）は実装済みだが、`ANTHROPIC_API_KEY` Secret未登録・`ai-news-pipeline.yml` の `schedule` トリガーが未有効化の状態でリポジトリに存在する（意図的。試験運用してから毎朝実行を有効にする方針）。週刊AIまとめ・ニュースレター・X/LinkedIn投稿生成・AIエージェントランキング・Medical AIレポートへの拡張は未着手（Collector/Scorer/Generatorを独立モジュール化してあるため拡張は容易）

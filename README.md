@@ -54,8 +54,10 @@ src/
     [category]/[slug].astro    記事詳細
     tags/[tag]/index.astro     タグ別記事一覧
 public/          robots.txt, logo.svg, og-default.svg 等の静的アセット
-docs/            AWSインフラ構築手順書等
-.github/workflows/deploy.yml   GitHub Actionsによる自動デプロイ
+docs/            AWSインフラ構築手順書、AIニュースパイプライン手順書等
+scripts/ai-news-pipeline/   AIニュース記事下書き自動生成パイプライン（下記参照）
+.github/workflows/deploy.yml            GitHub Actionsによる自動デプロイ
+.github/workflows/ai-news-pipeline.yml   AIニュース下書き自動生成（毎朝cron）
 ```
 
 ## 記事の追加方法
@@ -81,6 +83,17 @@ heroImage: "/images/articles/example.jpg" # 省略可。未指定時はカード
 ```
 
 見出し（`##`/`###`）は記事詳細ページの目次に自動反映される。カテゴリと記事のURLスラッグ対応は `src/consts.ts` の `CATEGORIES` で一元管理している。
+
+## AIニュース記事下書き自動生成パイプライン
+
+`scripts/ai-news-pipeline/` に、記事作成を半自動化するパイプラインを実装している。毎朝AIニュースを収集し重要度をスコアリング、閾値を超えたものだけAIが記事下書き（`draft: true`）を生成してPull Requestを作成する。**完全自動公開は行わず、必ず人間がレビュー・マージしてから公開する。**
+
+```bash
+npm run pipeline     # collect→score→generateをローカル実行（git操作は行わない）
+npm run dashboard     # http://localhost:4322 で当日の実行ログを確認（認証なし・ローカル専用）
+```
+
+セットアップ手順・収集元一覧・コスト目安・既知の制約は [`docs/ai-news-pipeline.md`](./docs/ai-news-pipeline.md) を参照。GitHub Actions側の定義は [`.github/workflows/ai-news-pipeline.yml`](./.github/workflows/ai-news-pipeline.yml)。
 
 ## デプロイ
 

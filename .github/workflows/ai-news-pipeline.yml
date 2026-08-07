@@ -1,0 +1,115 @@
+name: AI News Draft Pipeline
+
+# 毎朝AIニュースを収集・スコアリングし、閾値を超えた候補のみ記事下書きPRを作成する。
+# ANTHROPIC_API_KEY未設定のうちは schedule をコメントアウトし、workflow_dispatchのみで試験運用すること。
+on:
+  schedule:
+    - cron: '0 22 * * *' # UTC 22:00 = JST 7:00
+  workflow_dispatch: {}
+
+# 手動実行と定期実行が重複して同時に走り、API課金が二重発生することを防ぐ
+concurrency:
+  group: ai-news-pipeline
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    outputs:
+      drafts: ${{ steps.run-pipeline.outputs.drafts }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run collect/score/generate pipeline
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm run pipeline
+
+      - name: Stage generated drafts for handoff to create-prs job
+        id: run-pipeline
+        run: |
+          manifest="scripts/ai-news-pipeline/data/.pending-drafts.json"
+          mkdir -p pipeline-artifact
+          count=$(jq 'length' "$manifest")
+          if [ "$count" -gt 0 ]; then
+            for filePath in $(jq -r '.[].filePath' "$manifest"); do
+              mkdir -p "pipeline-artifact/$(dirname "$filePath")"
+              cp "$filePath" "pipeline-artifact/$filePath"
+            done
+          fi
+          echo "drafts=$(jq -c '.' "$manifest")" >> "$GITHUB_OUTPUT"
+
+      - name: Upload generated drafts artifact
+        if: steps.run-pipeline.outputs.drafts != '[]'
+        uses: actions/upload-artifact@v4
+        with:
+          name: pipeline-artifact
+          path: pipeline-artifact
+          retention-days: 1
+
+      - name: Commit collection log & dedup ledger to main
+        run: |
+          git config user.name "kusabase-ai-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add scripts/ai-news-pipeline/data/seen.json scripts/ai-news-pipeline/data/logs
+          if git diff --cached --quiet; then
+            echo "変更なし。コミットをスキップします"
+          else
+            git commit -m "chore: AIニュース収集ログ更新 ($(date -u +%Y-%m-%d))"
+            git push
+          fi
+
+  create-prs:
+    needs: pipeline
+    if: needs.pipeline.outputs.drafts != '[]'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        draft: ${{ fromJson(needs.pipeline.outputs.drafts) }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Download generated drafts artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: pipeline-artifact
+          path: pipeline-artifact
+
+      - name: Place draft article file
+        run: |
+          mkdir -p "$(dirname '${{ matrix.draft.filePath }}')"
+          cp "pipeline-artifact/${{ matrix.draft.filePath }}" "${{ matrix.draft.filePath }}"
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "feat: AIニュース下書き追加 (${{ matrix.draft.title }})"
+          branch: ${{ matrix.draft.branch }}
+          delete-branch: true
+          title: "AI News Draft: ${{ matrix.draft.title }}"
+          add-paths: ${{ matrix.draft.filePath }}
+          body: |
+            AIニュース自動収集パイプラインによる記事下書きです。マージ前に必ず人間がレビューしてください。
+
+            - 重要度スコア: ${{ matrix.draft.overallScore }} / 100
+            - 出典: [${{ matrix.draft.sourceName }}](${{ matrix.draft.sourceUrl }})
+
+            frontmatterの `draft: true` を確認のうえ、内容を編集してから `draft: false` に変更して公開してください。

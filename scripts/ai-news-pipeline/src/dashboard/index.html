@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<title>AI News Pipeline ダッシュボード</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  :root { color-scheme: light dark; }
+  body { font-family: -apple-system, "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif; margin: 0; padding: 2rem; background: #f7f4ee; color: #2b2b2b; }
+  h1 { font-size: 1.25rem; margin-bottom: 1.5rem; }
+  .cards { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; }
+  .card { background: #fff; border: 1px solid #e2ddd0; border-radius: 8px; padding: 1rem 1.5rem; min-width: 140px; }
+  .card .label { font-size: 0.8rem; color: #777; margin-bottom: 0.4rem; }
+  .card .value { font-size: 1.8rem; font-weight: 600; }
+  section { margin-bottom: 2rem; }
+  h2 { font-size: 1rem; border-bottom: 1px solid #e2ddd0; padding-bottom: 0.4rem; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  th, td { text-align: left; padding: 0.4rem 0.6rem; border-bottom: 1px solid #eee; }
+  .status-draft_created { color: #2e7d32; }
+  .status-validation_failed { color: #c62828; }
+  .status-candidate { color: #777; }
+  .error-row { color: #c62828; font-size: 0.85rem; }
+  .empty { color: #999; font-size: 0.85rem; }
+  .note { font-size: 0.75rem; color: #999; margin-top: 0.4rem; }
+</style>
+</head>
+<body>
+  <h1>AI News Pipeline ダッシュボード（ローカル専用）</h1>
+
+  <div class="cards" id="cards"></div>
+
+  <section>
+    <h2>今日の候補記事一覧</h2>
+    <div id="items"></div>
+  </section>
+
+  <section>
+    <h2>今日のエラー履歴</h2>
+    <div id="errors"></div>
+  </section>
+
+  <section>
+    <h2>直近14日の実行履歴</h2>
+    <div id="history"></div>
+  </section>
+
+<script>
+async function main() {
+  const res = await fetch('/api/summary')
+  const data = await res.json()
+  renderCards(data)
+  renderItems(data)
+  renderErrors(data)
+  renderHistory(data)
+}
+
+function renderCards(data) {
+  const log = data.todayLog
+  const cards = [
+    { label: '今日の収集件数', value: log ? log.collected : '-' },
+    { label: '記事候補数', value: log ? log.candidates : '-' },
+    { label: 'PR作成数（≒下書き生成数）', value: log ? log.draftsGenerated : '-' },
+    { label: 'エラー件数', value: log ? log.errors.length : '-' },
+  ]
+  document.getElementById('cards').innerHTML = cards
+    .map((c) => `<div class="card"><div class="label">${c.label}</div><div class="value">${c.value}</div></div>`)
+    .join('') + '<p class="note">「PR作成数」はローカル実行で生成された下書き数です。実際のPRはGitHub Actions実行時のみ作成されます。</p>'
+}
+
+function renderItems(data) {
+  const el = document.getElementById('items')
+  const items = data.todayLog ? data.todayLog.items : []
+  if (items.length === 0) {
+    el.innerHTML = '<p class="empty">本日の実行ログがありません（npm run pipeline を実行してください）</p>'
+    return
+  }
+  el.innerHTML = `<table><thead><tr><th>タイトル</th><th>ソース</th><th>スコア</th><th>ステータス</th></tr></thead><tbody>${items
+    .map((i) => `<tr><td>${escapeHtml(i.title)}</td><td>${escapeHtml(i.sourceName)}</td><td>${i.overallScore}</td><td class="status-${i.status}">${i.status}</td></tr>`)
+    .join('')}</tbody></table>`
+}
+
+function renderErrors(data) {
+  const el = document.getElementById('errors')
+  const errors = data.todayLog ? data.todayLog.errors : []
+  if (errors.length === 0) {
+    el.innerHTML = '<p class="empty">エラーはありません</p>'
+    return
+  }
+  el.innerHTML = errors.map((e) => `<div class="error-row">[${e.step}]${e.sourceId ? ' (' + e.sourceId + ')' : ''} ${escapeHtml(e.message)}</div>`).join('')
+}
+
+function renderHistory(data) {
+  const el = document.getElementById('history')
+  if (data.recentLogs.length === 0) {
+    el.innerHTML = '<p class="empty">履歴がありません</p>'
+    return
+  }
+  el.innerHTML = `<table><thead><tr><th>日付</th><th>収集</th><th>候補</th><th>下書き</th><th>エラー</th></tr></thead><tbody>${data.recentLogs
+    .map((l) => `<tr><td>${l.date}</td><td>${l.collected}</td><td>${l.candidates}</td><td>${l.draftsGenerated}</td><td>${l.errors.length}</td></tr>`)
+    .join('')}</tbody></table>`
+}
+
+function escapeHtml(str) {
+  return String(str).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]))
+}
+
+main().catch((err) => {
+  document.body.innerHTML += `<p style="color:#c62828">読み込みエラー: ${err.message}</p>`
+})
+</script>
+</body>
+</html>

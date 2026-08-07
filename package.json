@@ -8,16 +8,22 @@
     "start": "astro dev",
     "build": "astro build && pagefind --site dist",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "pipeline": "tsx scripts/ai-news-pipeline/src/run.ts",
+    "dashboard": "node scripts/ai-news-pipeline/src/dashboard/serve.mjs"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.1",
     "@astrojs/sitemap": "3.2.1",
     "@astrojs/tailwind": "^5.1.3",
     "astro": "^4.16.18",
-    "tailwindcss": "^3.4.17"
+    "rss-parser": "^3.13.0",
+    "tailwindcss": "^3.4.17",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "pagefind": "^1.3.0",
+    "tsx": "^4.19.2",
     "typescript": "^5.6.0"
   }
 }

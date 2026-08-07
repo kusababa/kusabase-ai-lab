@@ -17,3 +17,9 @@ Thumbs.db
 
 # ログ
 npm-debug.log*
+
+# AIニュース自動収集パイプライン（scripts/ai-news-pipeline/）
+# seen.json・logs/は重複排除台帳・実行ログとしてコミット対象にする。
+# .pending-drafts.jsonはJob1→Job2受け渡し用の一時ファイルのため対象外。
+scripts/ai-news-pipeline/data/.pending-drafts.json
+pipeline-artifact/
