@@ -1,0 +1,33 @@
+{
+  "date": "2026-08-07",
+  "collected": 24,
+  "candidates": 3,
+  "draftsGenerated": 3,
+  "errors": [
+    {
+      "step": "collect",
+      "sourceId": "langchain-blog",
+      "message": "Invalid character in entity name\nLine: 0\nColumn: 2327\nChar: &"
+    }
+  ],
+  "items": [
+    {
+      "title": "Deploy local agents everywhere with LFM2.5-2.6B",
+      "sourceName": "Hugging Face",
+      "overallScore": 73,
+      "status": "draft_created"
+    },
+    {
+      "title": "Improving GPT‑5.6 Sol in ChatGPT—and expanding access to GPT-5.6 Luna for free users",
+      "sourceName": "OpenAI",
+      "overallScore": 72,
+      "status": "draft_created"
+    },
+    {
+      "title": "When Semantic Chunking Beats Fixed-Size Splitting",
+      "sourceName": "n8n",
+      "overallScore": 70,
+      "status": "draft_created"
+    }
+  ]
+}
