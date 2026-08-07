@@ -2,6 +2,7 @@
 import type { ArticleEntry } from '../utils/articles'
 import { getArticleUrl } from '../utils/articles'
 import { calculateReadingTime } from '../utils/readingTime'
+import { getCategoryByName, getCategoryImage, type CategoryName } from '../consts'
 import CategoryBadge from './CategoryBadge.astro'
 
 interface Props {
@@ -11,6 +12,7 @@ interface Props {
 const { article } = Astro.props
 const url = getArticleUrl(article)
 const readingTime = calculateReadingTime(article.body)
+const thumbnailImage = article.data.heroImage ?? getCategoryImage(getCategoryByName(article.data.category as CategoryName))
 const formattedDate = article.data.publishDate.toLocaleDateString('ja-JP', {
   year: 'numeric',
   month: 'long',
@@ -20,13 +22,7 @@ const formattedDate = article.data.publishDate.toLocaleDateString('ja-JP', {
 
 <article class="group flex flex-col overflow-hidden rounded-xl border border-greige-200 bg-ivory-50 transition-shadow hover:shadow-md">
   <a href={url} class="block aspect-[16/9] overflow-hidden bg-ivory-300">
-    {article.data.heroImage ? (
-      <img src={article.data.heroImage} alt={article.data.title} class="h-full w-full object-cover" loading="lazy" />
-    ) : (
-      <div class="flex h-full w-full items-center justify-center text-greige-500">
-        <span class="text-sm">KusaBase AI Lab</span>
-      </div>
-    )}
+    <img src={thumbnailImage} alt={article.data.title} class="h-full w-full object-cover" loading="lazy" />
   </a>
   <div class="flex flex-1 flex-col gap-3 p-5">
     <CategoryBadge category={article.data.category} />

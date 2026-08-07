@@ -53,3 +53,20 @@ export const ACCENT_CLASSES: Record<CategoryInfo['accentKey'], { text: string; b
   development: { text: 'text-accent-development', bg: 'bg-accent-development/10', border: 'border-accent-development' },
   weekly: { text: 'text-accent-weekly', bg: 'bg-accent-weekly/10', border: 'border-accent-weekly' },
 }
+
+// 記事frontmatterに`heroImage`が未指定の場合に使うカテゴリ別デフォルト画像。
+// 実写真等に差し替える場合は、同じファイル名（拡張子込み）で public/images/categories/ を上書きするか、
+// このマップのパスを新しいファイル名に変更する
+export const CATEGORY_IMAGES: Record<CategoryInfo['accentKey'], string> = {
+  news: '/images/categories/news.svg',
+  agents: '/images/categories/agents.svg',
+  automation: '/images/categories/automation.svg',
+  medical: '/images/categories/medical-ai.svg',
+  development: '/images/categories/development.svg',
+  weekly: '/images/categories/weekly.svg',
+}
+
+/** 記事のheroImageが未指定のときに使う、カテゴリ別フォールバック画像のパスを返す */
+export function getCategoryImage(category: CategoryInfo): string {
+  return CATEGORY_IMAGES[category.accentKey]
+}

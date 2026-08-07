@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="Medical AI">
+  <rect width="1200" height="630" fill="#F5F1E9" />
+  <circle cx="900" cy="150" r="420" fill="#7A6B8C" fill-opacity="0.10" />
+  <circle cx="230" cy="520" r="300" fill="#7A6B8C" fill-opacity="0.08" />
+  <rect x="80" y="80" width="260" height="56" rx="28" fill="#7A6B8C" />
+  <text x="210" y="115" font-family="'Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="24" fill="#FEFDFB" text-anchor="middle">Medical AI</text>
+  <text x="600" y="335" font-family="'Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="56" font-weight="500" fill="#2B2823" text-anchor="middle">Medical AI</text>
+  <text x="600" y="400" font-family="'Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif" font-size="22" fill="#736C60" text-anchor="middle">KusaBase AI Lab</text>
+</svg>

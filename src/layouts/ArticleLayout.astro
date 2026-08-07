@@ -9,7 +9,7 @@ import RelatedArticles from '../components/RelatedArticles.astro'
 import PrevNextArticle from '../components/PrevNextArticle.astro'
 import AdSlot from '../components/AdSlot.astro'
 import { calculateReadingTime } from '../utils/readingTime'
-import { getCategoryByName, type CategoryName } from '../consts'
+import { getCategoryByName, getCategoryImage, type CategoryName } from '../consts'
 import type { ArticleEntry } from '../utils/articles'
 
 interface Props {
@@ -21,9 +21,10 @@ interface Props {
 }
 
 const { article, headings, relatedArticles, prev, next } = Astro.props
-const { title, description, publishDate, updatedDate, category, tags, author } = article.data
+const { title, description, publishDate, updatedDate, category, tags, author, heroImage } = article.data
 const readingTime = calculateReadingTime(article.body)
 const categoryInfo = getCategoryByName(category as CategoryName)
+const ogImage = heroImage ?? getCategoryImage(categoryInfo)
 
 const formattedPublishDate = publishDate.toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' })
 const formattedUpdatedDate = updatedDate?.toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' })
@@ -37,6 +38,7 @@ const breadcrumbs = [
 <BaseLayout
   title={title}
   description={description}
+  ogImage={ogImage}
   pageType="article"
   publishDate={publishDate}
   updatedDate={updatedDate}
