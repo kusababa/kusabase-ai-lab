@@ -32,7 +32,7 @@ lint・テストのコマンドは現時点で未設定（ESLint/Prettier/テス
 - **SEO**: `SEO.astro` がcanonical/OGP/Twitter Card/JSON-LD（Article or WebPage、Organization、BreadcrumbList）をまとめて出力。RSSは `@astrojs/rss` を使わず `src/pages/rss.xml.ts` で自前生成
 - **Pagefindの索引範囲**: `data-pagefind-body` を `ArticleLayout.astro` の記事本文ラッパーにのみ付与している。この属性を使うとサイト全体の索引対象が「この属性を持つ要素のみ」に切り替わる仕様のため、検索対象は記事本文に限定され、Header/Footer/About等は索引対象外になる（意図した挙動）
 - **Tailwindアクセントカラー**: JITは完全なクラス名文字列しか検出できないため、`text-accent-${key}` のような動的生成はできない。`src/consts.ts` の `ACCENT_CLASSES` に完全なクラス名を列挙する方式にしている
-- **AIニュース記事下書き自動生成パイプライン**（`scripts/ai-news-pipeline/`）: Astroサイト本体とは独立したNode/TypeScriptスクリプト群。`collect.ts`（ニュース収集）→`score.ts`（Claude Haikuで重要度スコアリング）→`generate.ts`（Claude Sonnetで記事構造をJSON生成し `src/content/config.ts` 相当のZodスキーマで検証後Markdown化）の順で実行され、`npm run pipeline` がエントリポイント。git操作は一切行わず、コミット・PR作成は `.github/workflows/ai-news-pipeline.yml` 側に分離している。完全自動公開はせず、PRを介した人間レビューを必須にする設計。詳細は `docs/ai-news-pipeline.md` を参照
+- **AIニュース記事下書き自動生成パイプライン**（`scripts/ai-news-pipeline/`）: Astroサイト本体とは独立したNode/TypeScriptスクリプト群。`collect.ts`（ニュース収集）→`score.ts`（Claude Haikuで重要度スコアリング）→`generate.ts`（Claude Sonnetで記事構造をJSON生成し `src/content/config.ts` 相当のZodスキーマで検証後Markdown化）の順で実行され、`npm run pipeline` がエントリポイント。git操作は一切行わず、コミット・PR作成は `.github/workflows/ai-news-pipeline.yml` 側に分離している。**`draft: false` で生成しており、完全自動公開はしないもののPRのマージ操作そのものが公開の最終承認になる**（GitHub Mobileアプリでの通知確認→マージのみで運用する設計。詳細は `docs/ai-news-pipeline.md` を参照）
 
 ## 既知の落とし穴
 

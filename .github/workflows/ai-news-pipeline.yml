@@ -107,9 +107,9 @@ jobs:
           title: "AI News Draft: ${{ matrix.draft.title }}"
           add-paths: ${{ matrix.draft.filePath }}
           body: |
-            AIニュース自動収集パイプラインによる記事下書きです。マージ前に必ず人間がレビューしてください。
+            AIニュース自動収集パイプラインによる記事です。**このPRをマージすると同時に本番公開されます。** 必ず内容を確認してからマージしてください。
 
             - 重要度スコア: ${{ matrix.draft.overallScore }} / 100
             - 出典: [${{ matrix.draft.sourceName }}](${{ matrix.draft.sourceUrl }})
 
-            frontmatterの `draft: true` を確認のうえ、内容を編集してから `draft: false` に変更して公開してください。
+            修正が必要な場合はこのPR上で編集してからマージ、公開しない場合はマージせずクローズしてください。

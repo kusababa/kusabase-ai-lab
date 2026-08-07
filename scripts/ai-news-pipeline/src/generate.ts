@@ -15,7 +15,9 @@ const articleFrontmatterSchema = z.object({
   publishDate: z.coerce.date(),
   category: z.enum(['News', 'AI Agents', 'Automation', 'Medical AI', 'Development', 'Weekly AI']),
   tags: z.array(z.string()).min(1),
-  draft: z.literal(true),
+  // マージ＝即公開の運用にするため、下書きの段階からdraft: falseで生成する。
+  // 公開前レビューの歯止めはPRのマージという人間の操作そのものが担う
+  draft: z.literal(false),
   author: z.string().min(1),
 })
 
@@ -88,7 +90,7 @@ description: "${frontmatter.description.replace(/"/g, '\\"')}"
 publishDate: ${publishDateStr}
 category: "${frontmatter.category}"
 tags: [${tagsYaml}]
-draft: true
+draft: false
 author: "${frontmatter.author}"
 ---
 
@@ -141,8 +143,10 @@ export async function generateDrafts(candidates: ScoredItem[]): Promise<Generate
         publishDate: today,
         category: generated.category,
         tags: generated.tags,
-        draft: true,
-        author: 'KusaBase AI Lab編集部（AI下書き・要レビュー）',
+        draft: false,
+        // マージした時点で公開扱いになるため、既存記事と同じ通常の著者名にする
+        // （「要レビュー」等の内部向け注記はPR上でのみ扱い、公開ページには出さない）
+        author: 'KusaBase AI Lab編集部',
       })
 
       const slug = sanitizeSlug(generated.slug)

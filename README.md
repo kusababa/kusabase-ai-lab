@@ -86,7 +86,7 @@ heroImage: "/images/articles/example.jpg" # 省略可。未指定時はカード
 
 ## AIニュース記事下書き自動生成パイプライン
 
-`scripts/ai-news-pipeline/` に、記事作成を半自動化するパイプラインを実装している。毎朝AIニュースを収集し重要度をスコアリング、閾値を超えたものだけAIが記事下書き（`draft: true`）を生成してPull Requestを作成する。**完全自動公開は行わず、必ず人間がレビュー・マージしてから公開する。**
+`scripts/ai-news-pipeline/` に、記事作成を半自動化するパイプラインを実装している。毎朝AIニュースを収集し重要度をスコアリング、閾値を超えたものだけAIが記事を生成してPull Requestを作成する。**完全自動公開は行わず、PRのマージという人間の操作を最終承認とする**（マージすると同時に本番公開される。GitHub Mobileアプリでの通知確認→マージのみで完結する運用を想定）。
 
 ```bash
 npm run pipeline     # collect→score→generateをローカル実行（git操作は行わない）

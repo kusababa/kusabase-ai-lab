@@ -1,6 +1,6 @@
 # AIニュース記事下書き自動生成パイプライン
 
-`scripts/ai-news-pipeline/` に実装されている、記事作成を半自動化するパイプラインの説明である。**完全自動公開は行わない**。AIが下書きを作成しPull Requestを作成するところまでを自動化し、必ず人間がレビュー・マージしてから本番公開する運用にする。
+`scripts/ai-news-pipeline/` に実装されている、記事作成を半自動化するパイプラインの説明である。**完全自動公開は行わない**。AIが記事を生成しPull Requestを作成するところまでを自動化し、**PRのマージという人間の操作そのものを最終承認かつ公開の合図とする**運用にする。
 
 ## 全体の流れ
 
@@ -11,14 +11,16 @@ News Collector（collect.ts）  各ソースを巡回し、data/seen.json未登�
   ↓
 Importance Scoring（score.ts）  Claude Haikuで0〜100点を採点、70点以上のみ候補化
   ↓
-Article Draft Generator（generate.ts）  候補上位（既定3件/日）をClaude Sonnetで記事下書き化
+Article Draft Generator（generate.ts）  候補上位（既定3件/日）をClaude Sonnetで記事化
   ↓
-src/content/articles/ へ draft: true で保存
+src/content/articles/ へ draft: false で保存
   ↓
 GitHub Pull Request作成（1記事1PR、タイトル "AI News Draft: {記事タイトル}"）
   ↓
-人間レビュー → マージ → 本番公開
+人間レビュー → マージ＝即座に本番公開
 ```
+
+**重要**: `draft: false` で生成しているため、**PRをマージした瞬間に本番公開される**（別途`draft`フラグを書き換える手順は不要）。GitHub Mobileアプリ等でPRの内容を確認し、その場でマージすればスマホだけで公開まで完結する運用を優先した設計である。その分、マージ操作自体が唯一の歯止めになるため、内容を確認せずマージしないよう注意すること。
 
 ## セットアップ
 
@@ -35,7 +37,7 @@ npm run dashboard     # http://localhost:4322 でその日の実行ログを確�
 
 実行結果は以下に出力される。
 
-- `src/content/articles/{日付}-{slug}.md` — 生成された記事下書き（`draft: true`）
+- `src/content/articles/{日付}-{slug}.md` — 生成された記事（`draft: false`。PRマージ＝即公開のため、ローカルでビルド確認する際は誤って`git push`しないよう注意）
 - `scripts/ai-news-pipeline/data/logs/{日付}.json` — 収集件数・候補数・生成件数・エラー履歴
 - `scripts/ai-news-pipeline/data/seen.json` — 収集済みURLの台帳（重複排除・再スコアリング防止用、コミット対象）
 
@@ -45,6 +47,17 @@ npm run dashboard     # http://localhost:4322 でその日の実行ログを確�
 
 - **Job1 `pipeline`**: `npm run pipeline` を実行し、`data/seen.json`・`data/logs/*.json` の更新を直接 `main` へpushする（内部ログのためPRレビュー対象にしない）。生成された下書きファイルはartifactとしてJob2へ引き渡す
 - **Job2 `create-prs`**: Job1が出力した下書き件数ぶんだけ動的matrixで並列実行し、下書き1件につき専用ブランチ＋PRを作成する（0件の日はJob2自体がスキップされる）
+
+## スマホでのレビュー運用
+
+「通知が来たらタップして確認し、そのままマージすれば公開まで完結する」運用を想定し、`draft: false`で生成する設計にしている。GitHub Mobileアプリ（iOS/Android）で以下を設定しておくとよい。
+
+1. アプリをインストールし、同じGitHubアカウントでログイン
+2. リポジトリページ右上の「Watch」→「All Activity」（またはPull requestsを含むカスタム設定）
+3. github.com の Settings → Notifications で、通知の配信方法に「GitHub Mobile」（プッシュ通知）が含まれていることを確認
+4. アプリ内 Settings → Notifications でプッシュ通知をON（OS側の通知許可も確認）
+
+PR作成の通知をタップ→「Files changed」で内容確認→問題なければそのままマージ、で公開まで完結する。**マージ操作そのものが公開の最終承認になるため、内容を確認せずマージしないこと。**
 
 ## 収集元と既知の制約
 
@@ -93,7 +106,7 @@ Claude API公式料金（2026-08-07時点、`https://claude.com/pricing`）は�
 
 - 生成プロンプトで単なる翻訳・転載を明示的に禁止し、「KusaBase視点の考察」セクションを必須にしている
 - 生成結果はMarkdown文字列ではなくJSON構造で受け取り、`src/content/config.ts` と同期させたZodスキーマでバリデーションしてから書き出す。バリデーション失敗時はPRを作らずエラーログに記録する
-- `author` フィールドに「（AI下書き・要レビュー）」を自動付与し、レビュー時にAI生成である旨が一目で分かるようにしている
+- `draft: false` で生成するため、公開後の記事ページに「AI下書き」等の内部向け注記が出ないよう、`author` は既存記事と同じ通常表記（`KusaBase AI Lab編集部`）にしている。AI生成である旨の確認は、公開前のPR差分レビューの段階で行う
 
 ## 将来拡張
 
