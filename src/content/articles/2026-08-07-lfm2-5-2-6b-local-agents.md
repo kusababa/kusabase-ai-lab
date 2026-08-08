@@ -4,8 +4,8 @@ description: "Liquid AIが公開した軽量モデルLFM2.5-2.6Bは、エッジ�
 publishDate: 2026-08-07
 category: "AI Agents"
 tags: ["LFM2.5", "Liquid AI", "エッジAI", "ローカルLLM", "AIエージェント", "軽量モデル"]
-draft: true
-author: "KusaBase AI Lab編集部（AI下書き・要レビュー）"
+draft: false
+author: "KusaBase AI Lab編集部"
 ---
 
 *出典: [Hugging Face](https://huggingface.co/blog/LiquidAI/lfm2-5-2-6b)*

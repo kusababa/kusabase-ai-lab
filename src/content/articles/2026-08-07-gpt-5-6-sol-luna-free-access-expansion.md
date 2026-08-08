@@ -4,8 +4,8 @@ description: "OpenAIがChatGPTのGPT-5.6 Solの精度と一貫性を改善し、
 publishDate: 2026-08-07
 category: "News"
 tags: ["OpenAI", "ChatGPT", "GPT-5.6", "AIモデル", "無料プラン"]
-draft: true
-author: "KusaBase AI Lab編集部（AI下書き・要レビュー）"
+draft: false
+author: "KusaBase AI Lab編集部"
 ---
 
 *出典: [OpenAI](https://openai.com/index/improving-gpt-5-6-sol-in-chatgpt)*
