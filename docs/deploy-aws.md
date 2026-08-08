@@ -124,7 +124,9 @@ Aレコード（エイリアス）:
 ## 6. 手動デプロイ（初回確認用）
 
 ```bash
-# 長期キャッシュ対象（HTML/robots/sitemap/rss/pagefind以外）
+# 長期キャッシュ対象（HTML/robots/sitemap/rss/pagefind、ファイル名固定のブランド画像を除く）
+# ※ logo.svg・og-default.svg・images/* はAstroのハッシュ付きファイル名によるキャッシュバスティングが
+#   効かない（ファイル名固定のまま中身だけ差し替える運用のため）ので、長期キャッシュから除外している
 aws s3 sync dist/ s3://ai.kusabase.com \
   --delete \
   --exclude "*.html" \
@@ -132,6 +134,9 @@ aws s3 sync dist/ s3://ai.kusabase.com \
   --exclude "sitemap*.xml" \
   --exclude "rss.xml" \
   --exclude "pagefind/*" \
+  --exclude "logo.svg" \
+  --exclude "og-default.svg" \
+  --exclude "images/*" \
   --cache-control "public, max-age=31536000, immutable"
 
 # no-cache対象
@@ -142,6 +147,9 @@ aws s3 sync dist/ s3://ai.kusabase.com \
   --include "sitemap*.xml" \
   --include "rss.xml" \
   --include "pagefind/*" \
+  --include "logo.svg" \
+  --include "og-default.svg" \
+  --include "images/*" \
   --cache-control "public, max-age=0, must-revalidate"
 
 # CloudFrontキャッシュ無効化
