@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import { SITE_TITLE } from '../consts'
+
+const lastUpdated = '2026年8月8日'
+---
+
+<BaseLayout
+  title="プライバシーポリシー"
+  description={`${SITE_TITLE}におけるプライバシーポリシー（個人情報の取り扱い、広告配信、Cookieの利用等）について説明します。`}
+  breadcrumbs={[{ name: 'プライバシーポリシー', url: '/privacy/' }]}
+>
+  <section class="container-page section-padding max-w-3xl">
+    <h1 class="mb-2 text-3xl font-medium text-charcoal-900">プライバシーポリシー</h1>
+    <p class="mb-10 text-sm text-charcoal-300">最終更新日: {lastUpdated}</p>
+
+    <p class="mb-4 text-charcoal-500">
+      {SITE_TITLE}（以下「当サイト」）は、KusaBase（以下「運営者」）が運営するメディアサイトです。
+      当サイトにおける個人情報およびアクセス情報の取り扱いについて、以下の通りプライバシーポリシー（以下「本ポリシー」）を定めます。
+    </p>
+
+    <h2 class="mb-4 mt-12 text-2xl font-medium text-charcoal-900">アクセス解析・ログについて</h2>
+    <p class="mb-4 text-charcoal-500">
+      当サイトはAmazon Web Services（S3・CloudFront）上でホスティングされており、一般的なWebサーバーと同様に、
+      アクセス時のIPアドレス・ブラウザの種類・アクセス日時等のログ情報が、セキュリティ確保および運用上の目的で
+      自動的に記録される場合があります。これらの情報は個人を特定する目的では利用しません。
+    </p>
+    <p class="mb-4 text-charcoal-500">
+      現時点では、当サイト独自のアクセス解析ツール（Google Analytics等）は導入していません。導入する場合は、
+      本ポリシーを更新のうえ周知します。
+    </p>
+
+    <h2 class="mb-4 mt-12 text-2xl font-medium text-charcoal-900">広告について</h2>
+    <p class="mb-4 text-charcoal-500">
+      当サイトは、第三者配信の広告サービス（Googleアドセンス等）を利用する場合があります。これらの広告配信事業者は、
+      ユーザーの興味に応じた広告を表示するためにCookie（クッキー）を使用することがあります。
+      Cookieを利用することで、当サイトや他サイトへのアクセス情報に基づいて広告が配信されますが、
+      この情報には氏名・住所・メールアドレス・電話番号は含まれません。
+    </p>
+    <p class="mb-4 text-charcoal-500">
+      Googleが提供する広告に関するCookieを無効にする場合は、
+      <a href="https://adssettings.google.com/" class="underline underline-offset-2" target="_blank" rel="noopener noreferrer">Google広告設定</a>
+      から設定を変更できます。また、
+      <a href="https://optout.aboutads.info/" class="underline underline-offset-2" target="_blank" rel="noopener noreferrer">aboutads.info</a>
+      にアクセスすることで、第三者配信事業者のCookieを無効にできます。
+    </p>
+
+    <h2 class="mb-4 mt-12 text-2xl font-medium text-charcoal-900">個人情報の収集について</h2>
+    <p class="mb-4 text-charcoal-500">
+      当サイトは、現時点で会員登録・お問い合わせフォーム等を通じた個人情報の収集は行っていません。
+      将来的にニュースレター配信やお問い合わせ機能を提供する場合、収集する情報の内容・利用目的について
+      本ポリシーを更新のうえ、あらためて明示します。
+    </p>
+
+    <h2 class="mb-4 mt-12 text-2xl font-medium text-charcoal-900">記事コンテンツについて</h2>
+    <p class="mb-4 text-charcoal-500">
+      当サイトの一部の記事は、AIによる情報収集・下書き生成を経たのち、運営者が内容を確認・編集して公開しています。
+      正確性の確保に努めていますが、内容の完全性・最新性を保証するものではありません。
+      記事内容の誤りにお気づきの場合は、下記のお問い合わせ先までご連絡ください。
+    </p>
+
+    <h2 class="mb-4 mt-12 text-2xl font-medium text-charcoal-900">外部サイトへのリンクについて</h2>
+    <p class="mb-4 text-charcoal-500">
+      当サイトから他のウェブサイトへのリンクを掲載する場合がありますが、リンク先サイトにおける
+      個人情報の取り扱いについて、運営者は責任を負いません。リンク先サイトのプライバシーポリシーをご確認ください。
+    </p>
+
+    <h2 class="mb-4 mt-12 text-2xl font-medium text-charcoal-900">本ポリシーの変更について</h2>
+    <p class="mb-4 text-charcoal-500">
+      本ポリシーの内容は、法令の変更等を踏まえ、事前の予告なく変更されることがあります。
+      変更後のプライバシーポリシーは、当ページに掲載した時点から効力を生じるものとします。
+    </p>
+
+    <h2 class="mb-4 mt-12 text-2xl font-medium text-charcoal-900">お問い合わせ</h2>
+    <p class="mb-4 text-charcoal-500">
+      本ポリシーに関するお問い合わせは、運営者である
+      <a href="https://kusabase.com" class="underline underline-offset-2" target="_blank" rel="noopener noreferrer">KusaBase</a>
+      のお問い合わせ窓口までご連絡ください。
+    </p>
+  </section>
+</BaseLayout>
