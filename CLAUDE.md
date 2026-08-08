@@ -13,6 +13,8 @@ npm install        # 依存パッケージインストール
 npm run dev         # 開発サーバー（http://localhost:4321）
 npm run build        # 本番ビルド（astro build → pagefind --site dist の順に実行）
 npm run preview       # ビルド済みdist/のプレビュー
+npm run pipeline      # AIニュース収集→スコアリング→記事生成をローカル実行（要 ANTHROPIC_API_KEY、git操作は行わない）
+npm run dashboard      # http://localhost:4322 でパイプラインの実行ログを確認（認証なし・ローカル専用）
 ```
 
 lint・テストのコマンドは現時点で未設定（ESLint/Prettier/テストフレームワークいずれも未導入）。
@@ -32,6 +34,7 @@ lint・テストのコマンドは現時点で未設定（ESLint/Prettier/テス
 - **SEO**: `SEO.astro` がcanonical/OGP/Twitter Card/JSON-LD（Article or WebPage、Organization、BreadcrumbList）をまとめて出力。RSSは `@astrojs/rss` を使わず `src/pages/rss.xml.ts` で自前生成
 - **Pagefindの索引範囲**: `data-pagefind-body` を `ArticleLayout.astro` の記事本文ラッパーにのみ付与している。この属性を使うとサイト全体の索引対象が「この属性を持つ要素のみ」に切り替わる仕様のため、検索対象は記事本文に限定され、Header/Footer/About等は索引対象外になる（意図した挙動）
 - **Tailwindアクセントカラー**: JITは完全なクラス名文字列しか検出できないため、`text-accent-${key}` のような動的生成はできない。`src/consts.ts` の `ACCENT_CLASSES` に完全なクラス名を列挙する方式にしている
+- **カテゴリ別デフォルト画像**: `src/consts.ts` の `CATEGORY_IMAGES`（`getCategoryImage()`経由）が、記事frontmatterに`heroImage`が無い場合のフォールバック画像（`public/images/categories/{slug}.svg`）を提供する。`ArticleCard.astro`（一覧のサムネイル）と`ArticleLayout.astro`（OGP画像）の両方がこのフォールバックを使う
 - **AIニュース記事下書き自動生成パイプライン**（`scripts/ai-news-pipeline/`）: Astroサイト本体とは独立したNode/TypeScriptスクリプト群。`collect.ts`（ニュース収集）→`score.ts`（Claude Haikuで重要度スコアリング）→`generate.ts`（Claude Sonnetで記事構造をJSON生成し `src/content/config.ts` 相当のZodスキーマで検証後Markdown化）の順で実行され、`npm run pipeline` がエントリポイント。git操作は一切行わず、コミット・PR作成は `.github/workflows/ai-news-pipeline.yml` 側に分離している。**`draft: false` で生成しており、完全自動公開はしないもののPRのマージ操作そのものが公開の最終承認になる**（GitHub Mobileアプリでの通知確認→マージのみで運用する設計。詳細は `docs/ai-news-pipeline.md` を参照）
 
 ## 既知の落とし穴
@@ -40,6 +43,7 @@ lint・テストのコマンドは現時点で未設定（ESLint/Prettier/テス
 - カテゴリ一覧ページは `[category]/index.astro` ではなく **`[category]/[...page].astro`** というファイル名にする必要がある。Astroの `paginate()` はルートパスにページ番号パラメータを含むファイル名を要求するため
 - `scripts/ai-news-pipeline/src/sources.ts` の収集元のうち、Anthropic Newsとxaiは公式RSSが存在しない/bot対策で自動取得できないことを確認済みのため `enabled: false` にしてある。有効化する場合は別途スクレイピング実装が必要
 - **`public/` 直下にファイル名固定で置く画像（`logo.svg` / `og-default.svg` / `images/*`）は、`.github/workflows/deploy.yml` の長期キャッシュ（`max-age=31536000, immutable`）から明示的に除外し、no-cache側に含める必要がある。** AstroがビルドするJS/CSSはコンテンツハッシュ付きファイル名になるため1年キャッシュしても安全だが、`public/`の画像は中身だけ差し替える運用のためファイル名が変わらず、除外し忘れると更新してもブラウザに永久に反映されない不具合になる（実際に発生し、修正済み）。新しくファイル名固定の画像を`public/`に追加する場合は、この除外リストにも追加すること
+- **AIニュースパイプラインのcronは`UTC 22:00`指定（JST 7:00相当）のため、`data/logs/{date}.json`のファイル名やAI生成記事の`publishDate`はUTC基準の日付になり、JSTでの「実行日の翌日」を指すように見える。** 例えばJST 8/8朝に実行された分のログは`2026-08-07.json`という名前になる。動作上の問題ではないが、日付を見て混乱しないこと
 
 ## デプロイ・インフラ
 
@@ -57,4 +61,4 @@ Anthropic風の「落ち着いた高級感」。アイボリー（`ivory.*`）�
 - Google AdSenseの実申請・スクリプト組み込み（`AdSlot.astro` はプレースホルダーのみ）
 - ニュースレター配信基盤（`NewsletterCTA.astro` はUIのみの「準備中」表示）
 - app.kusabase.com側のAIエージェント実装（問い合わせAI・医療向けAI・LINE対応AI）
-- AIニュース記事下書き自動生成パイプライン（`scripts/ai-news-pipeline/`）は実装済みだが、`ANTHROPIC_API_KEY` Secret未登録・`ai-news-pipeline.yml` の `schedule` トリガーが未有効化の状態でリポジトリに存在する（意図的。試験運用してから毎朝実行を有効にする方針）。週刊AIまとめ・ニュースレター・X/LinkedIn投稿生成・AIエージェントランキング・Medical AIレポートへの拡張は未着手（Collector/Scorer/Generatorを独立モジュール化してあるため拡張は容易）
+- AIニュース記事下書き自動生成パイプライン（`scripts/ai-news-pipeline/`）は本稼働中（`ANTHROPIC_API_KEY`登録済み、`schedule`トリガー有効、毎朝の自動実行→PR作成→マージによる公開まで実績あり）。週刊AIまとめ・ニュースレター・X/LinkedIn投稿生成・AIエージェントランキング・Medical AIレポートへの拡張は未着手（Collector/Scorer/Generatorを独立モジュール化してあるため拡張は容易）

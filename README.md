@@ -50,10 +50,10 @@ src/
     about.astro               About
     search.astro               検索ページ（Pagefind UI）
     rss.xml.ts                 RSSフィード
-    [category]/index.astro     カテゴリ別記事一覧（ページネーション付き）
+    [category]/[...page].astro   カテゴリ別記事一覧（ページネーション付き）
     [category]/[slug].astro    記事詳細
     tags/[tag]/index.astro     タグ別記事一覧
-public/          robots.txt, logo.svg, og-default.svg 等の静的アセット
+public/          robots.txt, logo.svg, og-default.svg, images/categories/（カテゴリ別デフォルト画像）等の静的アセット
 docs/            AWSインフラ構築手順書、AIニュースパイプライン手順書等
 scripts/ai-news-pipeline/   AIニュース記事下書き自動生成パイプライン（下記参照）
 .github/workflows/deploy.yml            GitHub Actionsによる自動デプロイ
@@ -74,7 +74,7 @@ tags: ["タグ1", "タグ2"]
 draft: false        # trueにすると一覧・検索・RSSから除外される
 featured: false      # トップページ Featured Articles に表示するか
 popular: false       # トップページ Popular Articles に表示するか（静的サイトのため手動指定）
-heroImage: "/images/articles/example.jpg" # 省略可。未指定時はカードにプレースホルダーを表示
+heroImage: "/images/articles/example.jpg" # 省略可。未指定時はカテゴリ別のデフォルト画像（src/consts.ts の CATEGORY_IMAGES）を表示
 ---
 
 ## 見出し2
@@ -105,14 +105,13 @@ npm run dashboard     # http://localhost:4322 で当日の実行ログを確認�
 | `S3_BUCKET` | デプロイ先S3バケット名 |
 | `CLOUDFRONT_DISTRIBUTION_ID` | キャッシュ無効化対象のCloudFront Distribution ID |
 
-AWS側（S3/CloudFront/Route53/ACM）の実際のリソース構築手順は [`docs/deploy-aws.md`](./docs/deploy-aws.md) を参照。**本リポジトリの初期構築時点ではAWSリソースは未作成のため、上記手順書に沿って先にインフラを準備すること。**
+AWS側（S3/CloudFront/Route53/ACM）は構築済み・稼働中。手順の詳細は [`docs/deploy-aws.md`](./docs/deploy-aws.md) を参照（新しく別環境を構築する場合に必要な手順書）。
 
 ## 今後の実装予定（未着手）
 
-- **デザインアセット**: `public/logo.svg` / `public/og-default.svg` はプレースホルダー。正式なロゴ・OGP画像（PNG/JPG推奨）への差し替えが必要
+- **デザインアセット**: `public/og-default.svg` と `public/images/categories/*.svg`（カテゴリ別デフォルト画像）はまだ簡易プレースホルダー。正式なOGP画像・カテゴリ画像への差し替えが必要（`public/logo.svg` は差し替え済み）
 - **Google AdSense**: `src/components/AdSlot.astro` に広告枠のプレースホルダーを用意済み。審査通過後にAdSenseスクリプト・ins要素を組み込む
 - **ニュースレター配信**: `src/components/NewsletterCTA.astro` はUIのみの「準備中」表示。配信基盤（メール配信サービス等）は未実装
-- **AI記事生成パイプライン**: 海外ニュース収集→AI要約→Markdown生成→人間レビュー→公開、という運用フローは今回のスコープ外。完全自動公開は行わない方針
 - **app.kusabase.com のAIエージェント群**（問い合わせAI・医療向けAI・LINE対応AI）: `about.astro` に導線のみ用意済み。実装は別プロジェクト
 
 ## デザイン方針
