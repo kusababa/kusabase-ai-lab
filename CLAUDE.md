@@ -42,7 +42,7 @@ lint・テストのコマンドは現時点で未設定（ESLint/Prettier/テス
 - **`@astrojs/sitemap` はpackage.jsonで `3.2.1` に完全固定**（キャレットを付けない）こと。3.7.x系はAstro 5で追加された `astro:routes:resolved` フックを前提にしており、Astro 4.16では発火しないため `Cannot read properties of undefined (reading 'reduce')` でビルドが壊れる（実際に発生し確認済み）
 - カテゴリ一覧ページは `[category]/index.astro` ではなく **`[category]/[...page].astro`** というファイル名にする必要がある。Astroの `paginate()` はルートパスにページ番号パラメータを含むファイル名を要求するため
 - `scripts/ai-news-pipeline/src/sources.ts` の収集元のうち、Anthropic Newsとxaiは公式RSSが存在しない/bot対策で自動取得できないことを確認済みのため `enabled: false` にしてある。有効化する場合は別途スクレイピング実装が必要
-- **`public/` 直下にファイル名固定で置く画像（`logo.svg` / `og-default.svg` / `images/*`）は、`.github/workflows/deploy.yml` の長期キャッシュ（`max-age=31536000, immutable`）から明示的に除外し、no-cache側に含める必要がある。** AstroがビルドするJS/CSSはコンテンツハッシュ付きファイル名になるため1年キャッシュしても安全だが、`public/`の画像は中身だけ差し替える運用のためファイル名が変わらず、除外し忘れると更新してもブラウザに永久に反映されない不具合になる（実際に発生し、修正済み）。新しくファイル名固定の画像を`public/`に追加する場合は、この除外リストにも追加すること
+- **`public/` 直下にファイル名固定で置く画像（`logo.svg` / `og-default.svg` / `AILab_icon.png` / `AILab_logo.png` / `images/*`）は、`.github/workflows/deploy.yml` の長期キャッシュ（`max-age=31536000, immutable`）から明示的に除外し、no-cache側に含める必要がある。** AstroがビルドするJS/CSSはコンテンツハッシュ付きファイル名になるため1年キャッシュしても安全だが、`public/`の画像は中身だけ差し替える運用のためファイル名が変わらず、除外し忘れると更新してもブラウザに永久に反映されない不具合になる（実際に発生し、修正済み）。新しくファイル名固定の画像を`public/`に追加する場合は、この除外リストにも追加すること
 - **AIニュースパイプラインのcronは`UTC 22:00`指定（JST 7:00相当）のため、`data/logs/{date}.json`のファイル名やAI生成記事の`publishDate`はUTC基準の日付になり、JSTでの「実行日の翌日」を指すように見える。** 例えばJST 8/8朝に実行された分のログは`2026-08-07.json`という名前になる。動作上の問題ではないが、日付を見て混乱しないこと
 
 ## デプロイ・インフラ
