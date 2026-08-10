@@ -1,0 +1,21 @@
+{
+  "date": "2026-08-09",
+  "collected": 17,
+  "candidates": 1,
+  "draftsGenerated": 1,
+  "errors": [
+    {
+      "step": "collect",
+      "sourceId": "langchain-blog",
+      "message": "Invalid character in entity name\nLine: 0\nColumn: 2327\nChar: &"
+    }
+  ],
+  "items": [
+    {
+      "title": "zhiningsun/industrial-mcp（★8）",
+      "sourceName": "GitHub Trending AI（近似）",
+      "overallScore": 70,
+      "status": "draft_created"
+    }
+  ]
+}
