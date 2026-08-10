@@ -136,6 +136,8 @@ aws s3 sync dist/ s3://ai.kusabase.com \
   --exclude "pagefind/*" \
   --exclude "logo.svg" \
   --exclude "og-default.svg" \
+  --exclude "AILab_icon.png" \
+  --exclude "AILab_logo.png" \
   --exclude "images/*" \
   --cache-control "public, max-age=31536000, immutable"
 
@@ -149,6 +151,8 @@ aws s3 sync dist/ s3://ai.kusabase.com \
   --include "pagefind/*" \
   --include "logo.svg" \
   --include "og-default.svg" \
+  --include "AILab_icon.png" \
+  --include "AILab_logo.png" \
   --include "images/*" \
   --cache-control "public, max-age=0, must-revalidate"
 
