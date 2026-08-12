@@ -1,0 +1,33 @@
+{
+  "date": "2026-08-10",
+  "collected": 25,
+  "candidates": 3,
+  "draftsGenerated": 3,
+  "errors": [
+    {
+      "step": "collect",
+      "sourceId": "langchain-blog",
+      "message": "Invalid character in entity name\nLine: 0\nColumn: 2327\nChar: &"
+    }
+  ],
+  "items": [
+    {
+      "title": "Build Low-Latency Multilingual Voice Agents: Open Weights & Full Deployment Control with NVIDIA Magpie TTS",
+      "sourceName": "Hugging Face",
+      "overallScore": 76,
+      "status": "draft_created"
+    },
+    {
+      "title": "One-click connection to nearly 70 MCP servers and when to use them",
+      "sourceName": "n8n",
+      "overallScore": 75,
+      "status": "draft_created"
+    },
+    {
+      "title": "Meta is back with Muse Glimmer: local, agentic, multimodal, and open source",
+      "sourceName": "Hugging Face",
+      "overallScore": 73,
+      "status": "draft_created"
+    }
+  ]
+}

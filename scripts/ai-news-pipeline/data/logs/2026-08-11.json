@@ -1,0 +1,27 @@
+{
+  "date": "2026-08-11",
+  "collected": 29,
+  "candidates": 2,
+  "draftsGenerated": 2,
+  "errors": [
+    {
+      "step": "collect",
+      "sourceId": "langchain-blog",
+      "message": "Invalid character in entity name\nLine: 0\nColumn: 2327\nChar: &"
+    }
+  ],
+  "items": [
+    {
+      "title": "AMIE, our research medical AI system, demonstrates real-time clinical video consultation capabilities in a first-of-its-kind study.",
+      "sourceName": "Google AI",
+      "overallScore": 76,
+      "status": "draft_created"
+    },
+    {
+      "title": "Easier connections to 70 MCP servers, plus when to use them in your workflows",
+      "sourceName": "n8n",
+      "overallScore": 72,
+      "status": "draft_created"
+    }
+  ]
+}
