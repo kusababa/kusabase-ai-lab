@@ -1,0 +1,45 @@
+---
+// LINE公式アカウントへの友だち追加を促すCTA。LINE_FRIEND_URL未設定の間は「準備中」表示にする
+import { LINE_FRIEND_URL } from '../consts'
+
+interface Props {
+  variant?: 'section' | 'inline'
+}
+
+const { variant = 'section' } = Astro.props
+const isReady = LINE_FRIEND_URL.length > 0
+---
+
+{variant === 'section' ? (
+  <section class="section-padding">
+    <div class="container-page rounded-2xl border border-greige-300 bg-ivory-200 px-8 py-12 text-center">
+      <h2 class="mb-3 text-2xl font-medium text-charcoal-900">LINEで新着記事を受け取る（準備中）</h2>
+      <p class="mx-auto mb-6 max-w-xl text-sm text-charcoal-500">
+        新しい記事を公開したときにLINEでお知らせします。公式アカウントの開設までしばらくお待ちください。
+      </p>
+      {isReady ? (
+        <a
+          href={LINE_FRIEND_URL}
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center gap-2 rounded-full bg-charcoal-900 px-6 py-3 text-sm font-medium text-ivory-50 hover:bg-charcoal-700"
+        >
+          <svg class="h-4 w-4 fill-[#06C755]" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" /></svg>
+          LINEで友だち追加
+        </a>
+      ) : (
+        <span class="inline-flex cursor-not-allowed items-center gap-2 rounded-full bg-greige-300 px-6 py-3 text-sm font-medium text-ivory-50">
+          準備中
+        </span>
+      )}
+    </div>
+  </section>
+) : (
+  isReady && (
+    <li>
+      <a href={LINE_FRIEND_URL} target="_blank" rel="noopener" class="text-charcoal-500 hover:text-charcoal-900">
+        LINEで友だち追加
+      </a>
+    </li>
+  )
+)}

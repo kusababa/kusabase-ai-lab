@@ -4,6 +4,10 @@ export const SITE_TITLE = 'KusaBase AI Lab'
 export const SITE_DESCRIPTION = 'AIを学び、試し、実装する。AI最新情報・AIエージェント研究・自動化・開発ログ・医療AI・実践検証を発信する実践型AIメディア。'
 export const SITE_URL = 'https://ai.kusabase.com'
 
+// LINE公式アカウントの友だち追加用URL。Basic ID（@から始まるID）から生成される固定フォーマット
+// https://line.me/R/ti/p/@{Basic ID} を使用（未設定の間は空文字のまま＝CTAは「準備中」表示になる）
+export const LINE_FRIEND_URL = 'https://line.me/R/ti/p/@595yfxim'
+
 export type CategoryName =
   | 'News'
   | 'AI Agents'

@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro'
 import ArticleCard from '../components/ArticleCard.astro'
 import NewsletterCTA from '../components/NewsletterCTA.astro'
+import LineFriendCTA from '../components/LineFriendCTA.astro'
 import AdSlot from '../components/AdSlot.astro'
 import {
   getFeaturedArticles,
@@ -116,6 +117,7 @@ const weeklyArticles = (await getArticlesByCategory('Weekly AI')).slice(0, 3)
   )}
 
   <NewsletterCTA />
+  <LineFriendCTA />
 
   <section class="section-padding">
     <div class="container-page grid items-center gap-10 md:grid-cols-2">
