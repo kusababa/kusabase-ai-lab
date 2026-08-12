@@ -1,0 +1,21 @@
+{
+  "date": "2026-08-12",
+  "collected": 35,
+  "candidates": 1,
+  "draftsGenerated": 1,
+  "errors": [
+    {
+      "step": "collect",
+      "sourceId": "langchain-blog",
+      "message": "Invalid character in entity name\nLine: 0\nColumn: 2327\nChar: &"
+    }
+  ],
+  "items": [
+    {
+      "title": "From assistance to execution: How enterprises put AI to work",
+      "sourceName": "OpenAI",
+      "overallScore": 79,
+      "status": "draft_created"
+    }
+  ]
+}
