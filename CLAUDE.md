@@ -62,6 +62,6 @@ Anthropic風の「落ち着いた高級感」。アイボリー（`ivory.*`）�
 - AWS実リソースの新規作成は完了済みだが、CloudFront Functionの `docs/deploy-aws.md` への反映は未対応（上記参照）
 - Google AdSenseの実申請・スクリプト組み込み（`AdSlot.astro` はプレースホルダーのみ）
 - ニュースレター配信基盤（`NewsletterCTA.astro` はUIのみの「準備中」表示）
-- LINE公式アカウントによる新着記事通知（`scripts/notify-line.ts` / `LineFriendCTA.astro`）は実装済みだが、`LINE_CHANNEL_ACCESS_TOKEN`（GitHub Secret）と`src/consts.ts`の`LINE_FRIEND_URL`はユーザー側の手動セットアップが未了（`docs/line-notify.md`参照）。設定が完了するまでCTAは「準備中」表示、配信ステップは自動スキップされる
+- LINE公式アカウントによる新着記事通知（`scripts/notify-line.ts` / `LineFriendCTA.astro`）は本稼働中。`LINE_CHANNEL_ACCESS_TOKEN`（GitHub Secret）・`src/consts.ts`の`LINE_FRIEND_URL`とも設定済みで、新規記事のマージ時にブロードキャスト配信される（セットアップ手順は`docs/line-notify.md`を参照）
 - app.kusabase.com側のAIエージェント実装（問い合わせAI・医療向けAI・LINE対応AI）
 - AIニュース記事下書き自動生成パイプライン（`scripts/ai-news-pipeline/`）は本稼働中（`ANTHROPIC_API_KEY`登録済み、`schedule`トリガー有効、毎朝の自動実行→PR作成→マージによる公開まで実績あり）。週刊AIまとめ・ニュースレター・X/LinkedIn投稿生成・AIエージェントランキング・Medical AIレポートへの拡張は未着手（Collector/Scorer/Generatorを独立モジュール化してあるため拡張は容易）

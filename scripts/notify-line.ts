@@ -15,7 +15,21 @@ const CHUNK_SIZE = 5
 
 interface PublishedArticle {
   title: string
+  description: string
   url: string
+  heroImageUrl?: string
+}
+
+// LINE Flex Messageの画像コンポーネントはJPEG/PNGのみ対応（SVG不可）。
+// カテゴリ別デフォルト画像（CATEGORY_IMAGES）は現状すべてSVGのため、
+// heroImageがラスター画像として明示設定されている記事のみ画像付きカードにする
+const RASTER_IMAGE_PATTERN = /\.(png|jpe?g|webp)$/i
+
+function resolveHeroImageUrl(heroImage: unknown): string | undefined {
+  if (typeof heroImage !== 'string' || !RASTER_IMAGE_PATTERN.test(heroImage)) {
+    return undefined
+  }
+  return heroImage.startsWith('http') ? heroImage : `${SITE_URL}${heroImage}`
 }
 
 function getAddedArticleFiles(before: string, after: string): string[] {
@@ -55,7 +69,44 @@ async function toPublishedArticle(filePath: string): Promise<PublishedArticle | 
   const filename = path.basename(filePath, '.md')
   return {
     title: data.title,
+    description: typeof data.description === 'string' ? data.description : '',
     url: `${SITE_URL}/${category.slug}/${filename}/`,
+    heroImageUrl: resolveHeroImageUrl(data.heroImage),
+  }
+}
+
+// LINE Flex Messageのbubble（カード）を組み立てる。heroImageUrlが無い場合は画像なしのテキストカードにする
+function buildFlexMessage(article: PublishedArticle) {
+  const bodyContents: Record<string, unknown>[] = [
+    { type: 'text', text: '新着記事', size: 'xs', color: '#A69E8F', weight: 'bold' },
+    { type: 'text', text: article.title, weight: 'bold', size: 'md', wrap: true, margin: 'sm' },
+  ]
+  if (article.description) {
+    bodyContents.push({ type: 'text', text: article.description, size: 'sm', color: '#736C60', wrap: true, margin: 'md' })
+  }
+
+  return {
+    type: 'flex',
+    altText: `新着記事: ${article.title}`,
+    contents: {
+      type: 'bubble',
+      ...(article.heroImageUrl
+        ? { hero: { type: 'image', url: article.heroImageUrl, size: 'full', aspectRatio: '20:13', aspectMode: 'cover' } }
+        : {}),
+      body: { type: 'box', layout: 'vertical', contents: bodyContents },
+      footer: {
+        type: 'box',
+        layout: 'vertical',
+        contents: [
+          {
+            type: 'button',
+            style: 'primary',
+            color: '#2B2823',
+            action: { type: 'uri', label: '記事を読む', uri: article.url },
+          },
+        ],
+      },
+    },
   }
 }
 
@@ -76,10 +127,7 @@ async function broadcast(token: string, articles: PublishedArticle[]): Promise<v
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
-        messages: group.map((article) => ({
-          type: 'text',
-          text: `新着記事: ${article.title}\n${article.url}`,
-        })),
+        messages: group.map(buildFlexMessage),
       }),
     })
 
