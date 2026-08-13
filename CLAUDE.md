@@ -36,7 +36,7 @@ lint・テストのコマンドは現時点で未設定（ESLint/Prettier/テス
 - **Tailwindアクセントカラー**: JITは完全なクラス名文字列しか検出できないため、`text-accent-${key}` のような動的生成はできない。`src/consts.ts` の `ACCENT_CLASSES` に完全なクラス名を列挙する方式にしている
 - **カテゴリ別デフォルト画像**: `src/consts.ts` の `CATEGORY_IMAGES`（`getCategoryImage()`経由）が、記事frontmatterに`heroImage`が無い場合のフォールバック画像（`public/images/categories/{slug}.svg`）を提供する。`ArticleCard.astro`（一覧のサムネイル）と`ArticleLayout.astro`（OGP画像）の両方がこのフォールバックを使う
 - **AIニュース記事下書き自動生成パイプライン**（`scripts/ai-news-pipeline/`）: Astroサイト本体とは独立したNode/TypeScriptスクリプト群。`collect.ts`（ニュース収集）→`score.ts`（Claude Haikuで重要度スコアリング）→`generate.ts`（Claude Sonnetで記事構造をJSON生成し `src/content/config.ts` 相当のZodスキーマで検証後Markdown化）の順で実行され、`npm run pipeline` がエントリポイント。git操作は一切行わず、コミット・PR作成は `.github/workflows/ai-news-pipeline.yml` 側に分離している。**`draft: false` で生成しており、完全自動公開はしないもののPRのマージ操作そのものが公開の最終承認になる**（GitHub Mobileアプリでの通知確認→マージのみで運用する設計。詳細は `docs/ai-news-pipeline.md` を参照）
-- **LINE公式アカウントへの新着記事通知**（`scripts/notify-line.ts`）: `.github/workflows/deploy.yml` のデプロイ完了後に実行され、`main`へのpush前後の差分で**新規追加(`git diff --diff-filter=A`)された** `src/content/articles/*.md` のみを検知し、`draft: false` のものをLINE Messaging APIでブロードキャスト配信する。既存記事の編集では通知しない。`LINE_CHANNEL_ACCESS_TOKEN`（GitHub Secret）未設定・API失敗時は常に正常終了しデプロイに影響しない。セットアップ手順は `docs/line-notify.md` を参照
+- **LINE公式アカウントへの新着記事通知**（`scripts/notify-line.ts`）: `.github/workflows/deploy.yml` のデプロイ完了後に実行され、`main`へのpush前後の差分で**新規追加(`git diff --diff-filter=A`)された** `src/content/articles/*.md` のみを検知し、`draft: false` のものをLINE Messaging APIでFlex Message（タイトル・説明文・「記事を読む」ボタン付きのカード形式）としてブロードキャスト配信する。既存記事の編集では通知しない。`LINE_CHANNEL_ACCESS_TOKEN`（GitHub Secret）未設定・API失敗時は常に正常終了しデプロイに影響しない。セットアップ手順は `docs/line-notify.md` を参照
 
 ## 既知の落とし穴
 
@@ -46,6 +46,7 @@ lint・テストのコマンドは現時点で未設定（ESLint/Prettier/テス
 - **`public/` 直下にファイル名固定で置く画像（`logo.svg` / `og-default.svg` / `AILab_icon.png` / `AILab_logo.png` / `images/*`）は、`.github/workflows/deploy.yml` の長期キャッシュ（`max-age=31536000, immutable`）から明示的に除外し、no-cache側に含める必要がある。** AstroがビルドするJS/CSSはコンテンツハッシュ付きファイル名になるため1年キャッシュしても安全だが、`public/`の画像は中身だけ差し替える運用のためファイル名が変わらず、除外し忘れると更新してもブラウザに永久に反映されない不具合になる（実際に発生し、修正済み）。新しくファイル名固定の画像を`public/`に追加する場合は、この除外リストにも追加すること
 - **AIニュースパイプラインのcronは`UTC 22:00`指定（JST 7:00相当）のため、`data/logs/{date}.json`のファイル名やAI生成記事の`publishDate`はUTC基準の日付になり、JSTでの「実行日の翌日」を指すように見える。** 例えばJST 8/8朝に実行された分のログは`2026-08-07.json`という名前になる。動作上の問題ではないが、日付を見て混乱しないこと
 - **LINE通知（`scripts/notify-line.ts`）は`git diff`でpush前後の差分を取るため、`.github/workflows/deploy.yml`の`checkout`ステップに`fetch-depth: 0`が必要。** シャロークローンのままだと差分元コミットが存在せず`git diff`が失敗する
+- **LINE Flex Messageの画像コンポーネントはJPEG/PNGのみ対応でSVG不可。** `src/consts.ts`の`CATEGORY_IMAGES`（`heroImage`未指定時のフォールバック）は現状すべてSVGのため、`scripts/notify-line.ts`は`heroImage`がラスター画像（png/jpg/webp）の場合のみ画像付きカードにし、それ以外はテキストのみのカードにフォールバックする
 
 ## デプロイ・インフラ
 
