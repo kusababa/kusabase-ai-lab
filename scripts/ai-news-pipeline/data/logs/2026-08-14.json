@@ -1,0 +1,51 @@
+{
+  "date": "2026-08-14",
+  "collected": 30,
+  "candidates": 6,
+  "draftsGenerated": 3,
+  "errors": [
+    {
+      "step": "collect",
+      "sourceId": "langchain-blog",
+      "message": "Invalid character in entity name\nLine: 0\nColumn: 2327\nChar: &"
+    }
+  ],
+  "items": [
+    {
+      "title": "Previewing Ultrafast mode: GPT-5.6 Sol at up to 14X the speed",
+      "sourceName": "OpenAI",
+      "overallScore": 85,
+      "status": "draft_created"
+    },
+    {
+      "title": "The builder’s guide to GPT‑5.6",
+      "sourceName": "OpenAI",
+      "overallScore": 82,
+      "status": "draft_created"
+    },
+    {
+      "title": "v2.1.232",
+      "sourceName": "Claude Code",
+      "overallScore": 78,
+      "status": "draft_created"
+    },
+    {
+      "title": "Cloud Agents Start 3x Faster with Builds",
+      "sourceName": "Cursor",
+      "overallScore": 72,
+      "status": "candidate"
+    },
+    {
+      "title": "Record, train, and deploy from one place with Strands Agents, LeRobot, and Hugging Face Storage Buckets",
+      "sourceName": "Hugging Face",
+      "overallScore": 72,
+      "status": "candidate"
+    },
+    {
+      "title": "diegosouzapw/OmniCopilot（★16）",
+      "sourceName": "GitHub Trending AI（近似）",
+      "overallScore": 71,
+      "status": "candidate"
+    }
+  ]
+}
