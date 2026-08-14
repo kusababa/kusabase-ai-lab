@@ -5,7 +5,12 @@ import { NEWS_SOURCES } from './sources'
 import type { NewsItem, NewsSource, PipelineError } from './types'
 import { loadSeen } from './storage'
 
-const rssParser = new Parser()
+// フィード提供元が応答を返さずコネクションを張ったままにするケースがあり、
+// タイムアウト未設定だとcollectNews()のfor文全体が無期限にハングしてしまう
+// （実際にGitHub Actions上で3時間以上停止する事象が発生し確認済み）ため、必ず設定する
+const REQUEST_TIMEOUT_MS = 15000
+
+const rssParser = new Parser({ timeout: REQUEST_TIMEOUT_MS })
 
 // OpenAIブログ等、フィードが全期間のアーカイブを返すソースがあり、フィルタなしだと
 // 初回実行時に千件単位の記事を収集・スコアリングしてしまう（実測で確認済み）ため、
@@ -77,7 +82,7 @@ async function collectFromGitHubSearch(source: NewsSource): Promise<NewsItem[]> 
     headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`
   }
 
-  const response = await fetch(url, { headers })
+  const response = await fetch(url, { headers, signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS) })
   if (!response.ok) {
     throw new Error(`GitHub Search API failed: ${response.status} ${response.statusText}`)
   }

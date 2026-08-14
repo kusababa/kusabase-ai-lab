@@ -47,6 +47,7 @@ lint・テストのコマンドは現時点で未設定（ESLint/Prettier/テス
 - **AIニュースパイプラインのcronは`UTC 22:00`指定（JST 7:00相当）のため、`data/logs/{date}.json`のファイル名やAI生成記事の`publishDate`はUTC基準の日付になり、JSTでの「実行日の翌日」を指すように見える。** 例えばJST 8/8朝に実行された分のログは`2026-08-07.json`という名前になる。動作上の問題ではないが、日付を見て混乱しないこと
 - **LINE通知（`scripts/notify-line.ts`）は`git diff`でpush前後の差分を取るため、`.github/workflows/deploy.yml`の`checkout`ステップに`fetch-depth: 0`が必要。** シャロークローンのままだと差分元コミットが存在せず`git diff`が失敗する
 - **LINE Flex Messageの画像コンポーネントはJPEG/PNGのみ対応でSVG不可。** `src/consts.ts`の`CATEGORY_IMAGES`（`heroImage`未指定時のフォールバック）は現状すべてSVGのため、`scripts/notify-line.ts`は`heroImage`がラスター画像（png/jpg/webp）の場合のみ画像付きカードにし、それ以外はテキストのみのカードにフォールバックする
+- **`scripts/ai-news-pipeline/src/collect.ts`のRSS/HTTP取得には必ずタイムアウトを指定すること。** `rssParser`（`new Parser({ timeout: ... })`）や`fetch`（`AbortSignal.timeout(...)`）にタイムアウトが無いと、収集元サーバーが応答を返さずコネクションを張ったままにした際に`collectNews()`の`for`ループごと無期限にハングする。try/catchはエラーを投げないハングを捕捉できないため防げない（実際にGitHub Actions上で3時間以上停止する事故が発生し、`REQUEST_TIMEOUT_MS = 15000`の設定で解消・確認済み）。あわせて`.github/workflows/ai-news-pipeline.yml`の`pipeline`ジョブに`timeout-minutes: 15`を設定し、万一同種のハングが再発してもActionsのデフォルト上限（6時間）まで実行時間を浪費しない多重防御にしている
 
 ## デプロイ・インフラ
 

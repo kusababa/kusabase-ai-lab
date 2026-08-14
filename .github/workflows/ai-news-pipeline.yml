@@ -19,6 +19,7 @@ permissions:
 jobs:
   pipeline:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     outputs:
       drafts: ${{ steps.run-pipeline.outputs.drafts }}
     steps:
