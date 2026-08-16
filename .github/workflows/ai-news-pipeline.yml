@@ -70,10 +70,22 @@ jobs:
           git add scripts/ai-news-pipeline/data/seen.json scripts/ai-news-pipeline/data/logs
           if git diff --cached --quiet; then
             echo "変更なし。コミットをスキップします"
-          else
-            git commit -m "chore: AIニュース収集ログ更新 ($(date -u +%Y-%m-%d))"
-            git push
+            exit 0
           fi
+          git commit -m "chore: AIニュース収集ログ更新 ($(date -u +%Y-%m-%d))"
+          # 同日中の手動rerun等でmainが先に進んでいるとpushが競合するため、
+          # fetch→rebase→再pushを数回リトライする（実際にrerunでpush拒否が発生し確認済み）
+          for i in 1 2 3 4 5; do
+            if git push; then
+              exit 0
+            fi
+            echo "pushが競合したためリトライします (${i}回目)"
+            git fetch origin main
+            git rebase origin/main
+            sleep $((i * 3))
+          done
+          echo "5回リトライしてもpushに失敗しました" >&2
+          exit 1
 
   create-prs:
     needs: pipeline
