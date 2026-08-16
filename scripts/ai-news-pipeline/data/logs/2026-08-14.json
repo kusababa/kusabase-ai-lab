@@ -1,0 +1,27 @@
+{
+  "date": "2026-08-14",
+  "collected": 35,
+  "candidates": 2,
+  "draftsGenerated": 2,
+  "errors": [
+    {
+      "step": "collect",
+      "sourceId": "langchain-blog",
+      "message": "Invalid character in entity name\nLine: 0\nColumn: 2327\nChar: &"
+    }
+  ],
+  "items": [
+    {
+      "title": "Building AI Agent Observability for Production Workflows",
+      "sourceName": "n8n",
+      "overallScore": 78,
+      "status": "draft_created"
+    },
+    {
+      "title": "n8n Alternatives: Which AI Automation Platform Can You Deploy?",
+      "sourceName": "n8n",
+      "overallScore": 72,
+      "status": "draft_created"
+    }
+  ]
+}
