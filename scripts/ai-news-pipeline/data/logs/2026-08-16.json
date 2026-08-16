@@ -1,0 +1,14 @@
+{
+  "date": "2026-08-16",
+  "collected": 27,
+  "candidates": 0,
+  "draftsGenerated": 0,
+  "errors": [
+    {
+      "step": "collect",
+      "sourceId": "langchain-blog",
+      "message": "Invalid character in entity name\nLine: 0\nColumn: 2327\nChar: &"
+    }
+  ],
+  "items": []
+}
