@@ -60,7 +60,14 @@ async function main() {
   }
 }
 
-main().catch((error) => {
-  console.error('[ai-news-pipeline] 致命的エラー:', error)
-  process.exitCode = 1
-})
+// rss-parserが内部で張るHTTP接続（keep-alive等）が残ったままだと、
+// main()が正常終了してもNode.jsのイベントループが自然には終了せず、
+// プロセスが宙に浮いたまま停止し続ける（GitHub Actions上で実測15分ハングし、
+// timeout-minutesに引っかかって強制キャンセルされる事象を確認済み）ため、
+// 全処理完了後は明示的にprocess.exit()でプロセスを終了させる
+main()
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error('[ai-news-pipeline] 致命的エラー:', error)
+    process.exit(1)
+  })
