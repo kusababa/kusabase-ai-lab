@@ -22,8 +22,9 @@ const weeklyArticles = (await getArticlesByCategory('Weekly AI')).slice(0, 3)
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
   <!-- Hero -->
-  <section class="section-padding border-b border-greige-200 bg-ivory-200">
-    <div class="container-page text-center">
+  <section class="section-padding relative border-b border-greige-200 bg-ivory-200 bg-[url('/images/ailab_hero.webp')] bg-cover bg-center">
+    <div class="absolute inset-0 bg-ivory-200/70"></div>
+    <div class="container-page relative text-center">
       <p class="mb-4 text-sm font-medium tracking-widest text-charcoal-500">KUSABASE AI LAB</p>
       <h1 class="mx-auto max-w-2xl text-4xl font-medium leading-tight text-charcoal-900 md:text-5xl">
         AIを学び、試し、実装する。
