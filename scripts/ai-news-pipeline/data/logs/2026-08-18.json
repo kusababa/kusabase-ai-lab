@@ -1,0 +1,27 @@
+{
+  "date": "2026-08-18",
+  "collected": 26,
+  "candidates": 2,
+  "draftsGenerated": 2,
+  "errors": [
+    {
+      "step": "collect",
+      "sourceId": "langchain-blog",
+      "message": "Invalid character in entity name\nLine: 0\nColumn: 2327\nChar: &"
+    }
+  ],
+  "items": [
+    {
+      "title": "How Much Memory Does Your Agent Actually Need?",
+      "sourceName": "Hugging Face",
+      "overallScore": 75,
+      "status": "draft_created"
+    },
+    {
+      "title": "Asana cleared 5 years of engineering work in 2 weeks with Codex",
+      "sourceName": "OpenAI",
+      "overallScore": 72,
+      "status": "draft_created"
+    }
+  ]
+}
