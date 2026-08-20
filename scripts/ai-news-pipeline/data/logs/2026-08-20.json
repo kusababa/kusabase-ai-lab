@@ -1,0 +1,21 @@
+{
+  "date": "2026-08-20",
+  "collected": 34,
+  "candidates": 1,
+  "draftsGenerated": 1,
+  "errors": [
+    {
+      "step": "collect",
+      "sourceId": "langchain-blog",
+      "message": "Invalid character in entity name\nLine: 0\nColumn: 2327\nChar: &"
+    }
+  ],
+  "items": [
+    {
+      "title": "Build multi-agent teams that remember every customer with Amazon Bedrock AgentCore",
+      "sourceName": "n8n",
+      "overallScore": 72,
+      "status": "draft_created"
+    }
+  ]
+}
