@@ -1,0 +1,60 @@
+---
+import type { GetStaticPaths, Page } from 'astro'
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+import ArticleCard from '../../../components/ArticleCard.astro'
+import { getAllTags, getArticlesByTag, type ArticleEntry } from '../../../utils/articles'
+import { ARTICLES_PER_PAGE } from '../../../consts'
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const tags = await getAllTags()
+  const results = await Promise.all(
+    tags.map(async (tag) => {
+      const articles = await getArticlesByTag(tag)
+      return paginate(articles, {
+        params: { tag },
+        pageSize: ARTICLES_PER_PAGE,
+      })
+    })
+  )
+  return results.flat()
+}) satisfies GetStaticPaths
+
+interface Props {
+  page: Page<ArticleEntry>
+}
+
+const { page } = Astro.props as Props
+const tag = Astro.params.tag as string
+---
+
+<BaseLayout
+  title={`#${tag} の記事一覧`}
+  description={`「${tag}」タグが付いた記事の一覧です。`}
+  breadcrumbs={[{ name: `#${tag}`, url: `/tags/${encodeURIComponent(tag)}/` }]}
+>
+  <section class="container-page section-padding">
+    <header class="mb-10">
+      <h1 class="text-3xl font-medium text-charcoal-900">#{tag}</h1>
+      <p class="mt-2 text-charcoal-500">{page.total}件の記事があります。</p>
+    </header>
+
+    {page.data.length > 0 ? (
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {page.data.map((article) => <ArticleCard article={article} />)}
+      </div>
+    ) : (
+      <p class="text-charcoal-500">このタグの記事は見つかりませんでした。</p>
+    )}
+
+    {(page.url.prev || page.url.next) && (
+      <nav aria-label="ページネーション" class="mt-12 flex justify-center gap-4">
+        {page.url.prev && (
+          <a href={page.url.prev} class="rounded-full border border-greige-300 px-4 py-2 text-sm text-charcoal-700 hover:border-charcoal-500">前のページ</a>
+        )}
+        {page.url.next && (
+          <a href={page.url.next} class="rounded-full border border-greige-300 px-4 py-2 text-sm text-charcoal-700 hover:border-charcoal-500">次のページ</a>
+        )}
+      </nav>
+    )}
+  </section>
+</BaseLayout>

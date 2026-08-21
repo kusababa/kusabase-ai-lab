@@ -13,9 +13,14 @@ const isReady = LINE_FRIEND_URL.length > 0
 {variant === 'section' ? (
   <section class="section-padding">
     <div class="container-page rounded-2xl border border-greige-300 bg-ivory-200 px-8 py-12 text-center">
-      <h2 class="mb-3 text-2xl font-medium text-charcoal-900">LINEで新着記事を受け取る（準備中）</h2>
+      <h2 class="mb-3 text-2xl font-medium text-charcoal-900">
+        {isReady ? 'LINEで新着記事を受け取る' : 'LINEで新着記事を受け取る（準備中）'}
+      </h2>
       <p class="mx-auto mb-6 max-w-xl text-sm text-charcoal-500">
-        新しい記事を公開したときにLINEでお知らせします。公式アカウントの開設までしばらくお待ちください。
+        {isReady
+          ? '新しい記事を公開したときにLINEでお知らせします。ぜひ友だち追加してください。'
+          : '新しい記事を公開したときにLINEでお知らせします。公式アカウントの開設までしばらくお待ちください。'
+        }
       </p>
       {isReady ? (
         <a
