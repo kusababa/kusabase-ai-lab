@@ -1,5 +1,5 @@
 // ニュース収集元の定義。
-// URLは実装時に curl でHTTPステータスを確認済み（2026-08-07時点）。
+// URLは実装時に curl でHTTPステータスを確認済み（2026-08-07時点、追加分は2026-08-24時点）。
 // enabled: false のソースは、フィードが存在しない/bot対策で自動取得できないことを確認したもの。
 // 将来的にHTMLスクレイピング等の別実装を追加する余地として残してある。
 
@@ -67,6 +67,23 @@ export const NEWS_SOURCES: NewsSource[] = [
     enabled: true,
     note: 'GitHub公式Trendingページの近似（topic:ai を条件にした直近作成リポジトリのスター数ソート）',
   },
+  {
+    id: 'deepmind-blog',
+    name: 'Google DeepMind',
+    tier: 'high',
+    type: 'rss',
+    url: 'https://deepmind.google/blog/rss.xml',
+    enabled: true,
+  },
+  {
+    id: 'microsoft-ai-blog',
+    name: 'Microsoft AI Blog',
+    tier: 'high',
+    type: 'rss',
+    url: 'https://blogs.microsoft.com/ai/feed/',
+    enabled: false,
+    note: 'bot対策と思われる403応答を確認（2026-08-24時点）。GitHub Actionsからのアクセス可否を別途要検証',
+  },
 
   // ---- 優先度中 ----
   {
@@ -100,5 +117,30 @@ export const NEWS_SOURCES: NewsSource[] = [
     type: 'github-releases',
     url: 'https://github.com/modelcontextprotocol/servers/releases.atom',
     enabled: true,
+  },
+  {
+    id: 'aws-ml-blog',
+    name: 'AWS Machine Learning Blog',
+    tier: 'mid',
+    type: 'rss',
+    url: 'https://aws.amazon.com/blogs/machine-learning/feed/',
+    enabled: true,
+  },
+  {
+    id: 'nvidia-deep-learning-blog',
+    name: 'NVIDIA Deep Learning Blog',
+    tier: 'mid',
+    type: 'rss',
+    url: 'https://blogs.nvidia.com/blog/category/deep-learning/feed/',
+    enabled: true,
+  },
+  {
+    id: 'simonwillison-blog',
+    name: "Simon Willison's Weblog",
+    tier: 'mid',
+    type: 'rss',
+    url: 'https://simonwillison.net/atom/everything/',
+    enabled: true,
+    note: '個人ブログだがLLM関連の実装・検証記事が多く情報の質が高いため収集対象に含める',
   },
 ]
