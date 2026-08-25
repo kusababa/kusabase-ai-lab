@@ -1,0 +1,33 @@
+{
+  "date": "2026-08-25",
+  "collected": 34,
+  "candidates": 3,
+  "draftsGenerated": 3,
+  "errors": [
+    {
+      "step": "collect",
+      "sourceId": "langchain-blog",
+      "message": "Invalid character in entity name\nLine: 0\nColumn: 2327\nChar: &"
+    }
+  ],
+  "items": [
+    {
+      "title": "Jalapeño’s first results show industry-leading speed and efficiency in AI inference",
+      "sourceName": "OpenAI",
+      "overallScore": 75,
+      "status": "draft_created"
+    },
+    {
+      "title": "Agentic observability with Amazon OpenSearch Service MCP Apps",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 75,
+      "status": "draft_created"
+    },
+    {
+      "title": "The full stack behind abundant intelligence",
+      "sourceName": "OpenAI",
+      "overallScore": 72,
+      "status": "draft_created"
+    }
+  ]
+}
