@@ -1,0 +1,50 @@
+{
+  "date": "2026-08-27",
+  "collected": 48,
+  "candidates": 5,
+  "draftsGenerated": 2,
+  "errors": [
+    {
+      "step": "collect",
+      "sourceId": "langchain-blog",
+      "message": "Invalid character in entity name\nLine: 0\nColumn: 2327\nChar: &"
+    },
+    {
+      "step": "generate",
+      "sourceId": "aws-ml-blog",
+      "message": "[Natera’s intelligent appointment scheduling with Amazon Bedrock AgentCore] Claudeの応答をJSONとして解析できませんでした: Unterminated string in JSON at position 2127"
+    }
+  ],
+  "items": [
+    {
+      "title": "Natera’s intelligent appointment scheduling with Amazon Bedrock AgentCore",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 76,
+      "status": "candidate"
+    },
+    {
+      "title": "Evaluate any agent framework with Amazon Bedrock AgentCore Evaluations",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 75,
+      "status": "draft_created"
+    },
+    {
+      "title": "Connect Amazon Bedrock AgentCore to cross-account knowledge bases",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 75,
+      "status": "draft_created"
+    },
+    {
+      "title": "The Hugging Face incident and the road ahead",
+      "sourceName": "OpenAI",
+      "overallScore": 71,
+      "status": "candidate"
+    },
+    {
+      "title": "Intelligent transcription with Gemini 3.5 Transcribe",
+      "sourceName": "Google DeepMind",
+      "overallScore": 70,
+      "status": "candidate"
+    }
+  ]
+}
