@@ -1,0 +1,51 @@
+{
+  "date": "2026-08-28",
+  "collected": 51,
+  "candidates": 6,
+  "draftsGenerated": 3,
+  "errors": [
+    {
+      "step": "collect",
+      "sourceId": "langchain-blog",
+      "message": "Invalid character in entity name\nLine: 0\nColumn: 2327\nChar: &"
+    }
+  ],
+  "items": [
+    {
+      "title": "Breaking Claude Code Opus 5 Auto Mode",
+      "sourceName": "Simon Willison's Weblog",
+      "overallScore": 79,
+      "status": "draft_created"
+    },
+    {
+      "title": "Start from scratch, without a repo",
+      "sourceName": "Cursor",
+      "overallScore": 76,
+      "status": "draft_created"
+    },
+    {
+      "title": "RBAC for AI Agents: Why Static Roles Break and What Replaces Them",
+      "sourceName": "n8n",
+      "overallScore": 76,
+      "status": "draft_created"
+    },
+    {
+      "title": "Reduce ASR inference costs by 75% with NVIDIA MPS on Amazon EC2",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 76,
+      "status": "candidate"
+    },
+    {
+      "title": "Build agentic creative workflows with Amazon Quick and fal",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 75,
+      "status": "candidate"
+    },
+    {
+      "title": "Piloting the world's first double-blind AI evaluations",
+      "sourceName": "Google DeepMind",
+      "overallScore": 74,
+      "status": "candidate"
+    }
+  ]
+}
