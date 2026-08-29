@@ -1,8 +1,8 @@
 {
   "date": "2026-08-29",
-  "collected": 46,
-  "candidates": 1,
-  "draftsGenerated": 1,
+  "collected": 47,
+  "candidates": 0,
+  "draftsGenerated": 0,
   "errors": [
     {
       "step": "collect",
@@ -10,12 +10,5 @@
       "message": "Invalid character in entity name\nLine: 0\nColumn: 2327\nChar: &"
     }
   ],
-  "items": [
-    {
-      "title": "v2.1.251",
-      "sourceName": "Claude Code",
-      "overallScore": 72,
-      "status": "draft_created"
-    }
-  ]
+  "items": []
 }
