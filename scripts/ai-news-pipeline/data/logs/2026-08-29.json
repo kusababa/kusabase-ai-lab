@@ -1,8 +1,8 @@
 {
   "date": "2026-08-29",
-  "collected": 47,
-  "candidates": 0,
-  "draftsGenerated": 0,
+  "collected": 34,
+  "candidates": 1,
+  "draftsGenerated": 1,
   "errors": [
     {
       "step": "collect",
@@ -10,5 +10,12 @@
       "message": "Invalid character in entity name\nLine: 0\nColumn: 2327\nChar: &"
     }
   ],
-  "items": []
+  "items": [
+    {
+      "title": "sebastianbrzustowicz/Agentic-GraphRAG-Blueprint（★8）",
+      "sourceName": "GitHub Trending AI（近似）",
+      "overallScore": 71,
+      "status": "draft_created"
+    }
+  ]
 }
