@@ -340,5 +340,22 @@
   "https://aws.amazon.com/blogs/machine-learning/introducing-openai-models-on-amazon-bedrock-for-in-country-inferencing-in-india/": "2026-08-28",
   "https://aws.amazon.com/blogs/machine-learning/deepgram-deepens-amazon-sagemaker-ai-observability-with-enhanced-metrics/": "2026-08-28",
   "https://aws.amazon.com/blogs/machine-learning/reduce-asr-inference-costs-by-75-with-nvidia-mps-on-amazon-ec2/": "2026-08-28",
-  "https://simonwillison.net/2026/Aug/27/breaking-claude-code-opus-5-auto-mode/": "2026-08-28"
+  "https://simonwillison.net/2026/Aug/27/breaking-claude-code-opus-5-auto-mode/": "2026-08-28",
+  "https://openai.com/index/supporting-next-generation-ai-startups-thailand": "2026-08-29",
+  "https://github.com/anthropics/claude-code/releases/tag/v2.1.251": "2026-08-29",
+  "https://github.com/chillison/Closure": "2026-08-29",
+  "https://github.com/wsy1004/planpal": "2026-08-29",
+  "https://github.com/divanshusingh-ds/pandavision": "2026-08-29",
+  "https://github.com/Yuktimittal19/On-board-AI": "2026-08-29",
+  "https://github.com/Ddm140207/OxAlphaTrace": "2026-08-29",
+  "https://github.com/Cuptu/AstraCat": "2026-08-29",
+  "https://github.com/iabdulwasey/Nell": "2026-08-29",
+  "https://github.com/Vikas9892/fam_assi": "2026-08-29",
+  "https://github.com/mrll-lucas/Plugins-O2Switch": "2026-08-29",
+  "https://github.com/Kaaner4x/readify": "2026-08-29",
+  "https://huggingface.co/blog/open-asr-leaderboard-global-south": "2026-08-29",
+  "https://aws.amazon.com/blogs/machine-learning/batch-write-and-discover-records-in-amazon-sagemaker-feature-store/": "2026-08-29",
+  "https://aws.amazon.com/blogs/machine-learning/how-decathlon-runs-demand-forecasting-at-scale-with-chronos-2/": "2026-08-29",
+  "https://aws.amazon.com/blogs/machine-learning/spreading-the-load-how-salesforce-met-multi-az-ha-with-sagemaker-inference-components/": "2026-08-29",
+  "https://simonwillison.net/2026/Aug/28/just-a-rumour-of-a-bug/": "2026-08-29"
 }
