@@ -1,56 +1,85 @@
 {
   "date": "2026-09-01",
-  "collected": 24,
-  "candidates": 7,
-  "draftsGenerated": 3,
+  "collected": 44,
+  "candidates": 11,
+  "draftsGenerated": 2,
   "errors": [
     {
       "step": "collect",
       "sourceId": "langchain-blog",
       "message": "Invalid character in entity name\nLine: 0\nColumn: 2327\nChar: &"
+    },
+    {
+      "step": "generate",
+      "sourceId": "aws-ml-blog",
+      "message": "[How t54 built a trust layer with Amazon Bedrock AgentCore payments] Claudeの応答をJSONとして解析できませんでした: Unterminated string in JSON at position 2179"
     }
   ],
   "items": [
     {
-      "title": "Manage agents, tools and skills at scale with AWS Agent Registry",
-      "sourceName": "AWS Machine Learning Blog",
+      "title": "Introducing agentic video understanding with Gemini",
+      "sourceName": "Google DeepMind",
       "overallScore": 82,
       "status": "draft_created"
     },
     {
-      "title": "Build observable enterprise agentic retrieval using Managed Amazon Bedrock Knowledge Base with AWS CloudFormation",
+      "title": "How t54 built a trust layer with Amazon Bedrock AgentCore payments",
       "sourceName": "AWS Machine Learning Blog",
-      "overallScore": 81,
-      "status": "draft_created"
-    },
-    {
-      "title": "Polimill builds Japan's next-generation public AI infrastructure",
-      "sourceName": "OpenAI",
-      "overallScore": 78,
-      "status": "draft_created"
-    },
-    {
-      "title": "Long-running agents beyond prompt engineering",
-      "sourceName": "n8n",
       "overallScore": 76,
       "status": "candidate"
     },
     {
-      "title": "Build multi-tenant agentic chat applications on enterprise data with Amazon Bedrock Managed Knowledge Base",
-      "sourceName": "AWS Machine Learning Blog",
+      "title": "How AI-native companies turn workflows into operating capability",
+      "sourceName": "OpenAI",
+      "overallScore": 75,
+      "status": "draft_created"
+    },
+    {
+      "title": "Healthcare organizations can now connect EHR and additional industry data to ChatGPT",
+      "sourceName": "OpenAI",
       "overallScore": 75,
       "status": "candidate"
     },
     {
-      "title": "A milestone in expanding access to AI",
+      "title": "BenchMIRT: What are LLM benchmarks actually measuring?",
+      "sourceName": "Hugging Face",
+      "overallScore": 75,
+      "status": "candidate"
+    },
+    {
+      "title": "Introducing @huggingface/kernels: 200+ WebGPU Kernels for Local AI",
+      "sourceName": "Hugging Face",
+      "overallScore": 75,
+      "status": "candidate"
+    },
+    {
+      "title": "Securing Amazon Quick from POC to production: Agents, Flows, and Spaces",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 74,
+      "status": "candidate"
+    },
+    {
+      "title": "Path to Astra: critical capabilities and frontier safeguards",
       "sourceName": "OpenAI",
       "overallScore": 72,
       "status": "candidate"
     },
     {
-      "title": "Connect an AgentCore Runtime hosted MCP server to Amazon Quick",
-      "sourceName": "AWS Machine Learning Blog",
+      "title": "Python 3.15.0 candidate 2 is here!",
+      "sourceName": "Simon Willison's Weblog",
       "overallScore": 72,
+      "status": "candidate"
+    },
+    {
+      "title": "How Boomi Scribe streamlines documentation using AWS",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 71,
+      "status": "candidate"
+    },
+    {
+      "title": "v2.1.257",
+      "sourceName": "Claude Code",
+      "overallScore": 70,
       "status": "candidate"
     }
   ]
