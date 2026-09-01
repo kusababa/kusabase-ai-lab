@@ -1,0 +1,57 @@
+{
+  "date": "2026-09-01",
+  "collected": 24,
+  "candidates": 7,
+  "draftsGenerated": 3,
+  "errors": [
+    {
+      "step": "collect",
+      "sourceId": "langchain-blog",
+      "message": "Invalid character in entity name\nLine: 0\nColumn: 2327\nChar: &"
+    }
+  ],
+  "items": [
+    {
+      "title": "Manage agents, tools and skills at scale with AWS Agent Registry",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 82,
+      "status": "draft_created"
+    },
+    {
+      "title": "Build observable enterprise agentic retrieval using Managed Amazon Bedrock Knowledge Base with AWS CloudFormation",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 81,
+      "status": "draft_created"
+    },
+    {
+      "title": "Polimill builds Japan's next-generation public AI infrastructure",
+      "sourceName": "OpenAI",
+      "overallScore": 78,
+      "status": "draft_created"
+    },
+    {
+      "title": "Long-running agents beyond prompt engineering",
+      "sourceName": "n8n",
+      "overallScore": 76,
+      "status": "candidate"
+    },
+    {
+      "title": "Build multi-tenant agentic chat applications on enterprise data with Amazon Bedrock Managed Knowledge Base",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 75,
+      "status": "candidate"
+    },
+    {
+      "title": "A milestone in expanding access to AI",
+      "sourceName": "OpenAI",
+      "overallScore": 72,
+      "status": "candidate"
+    },
+    {
+      "title": "Connect an AgentCore Runtime hosted MCP server to Amazon Quick",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 72,
+      "status": "candidate"
+    }
+  ]
+}
