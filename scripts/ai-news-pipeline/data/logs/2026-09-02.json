@@ -1,0 +1,50 @@
+{
+  "date": "2026-09-02",
+  "collected": 63,
+  "candidates": 5,
+  "draftsGenerated": 2,
+  "errors": [
+    {
+      "step": "collect",
+      "sourceId": "langchain-blog",
+      "message": "Invalid character in entity name\nLine: 0\nColumn: 2327\nChar: &"
+    },
+    {
+      "step": "generate",
+      "sourceId": "claude-code-releases",
+      "message": "[v2.1.259] Claudeの応答をJSONとして解析できませんでした: Unterminated string in JSON at position 2457"
+    }
+  ],
+  "items": [
+    {
+      "title": "From code to diagrams: Agentic architecture documentation with Amazon Bedrock AgentCore",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 75,
+      "status": "draft_created"
+    },
+    {
+      "title": "Self-hosted machines",
+      "sourceName": "Cursor",
+      "overallScore": 72,
+      "status": "draft_created"
+    },
+    {
+      "title": "v2.1.259",
+      "sourceName": "Claude Code",
+      "overallScore": 72,
+      "status": "candidate"
+    },
+    {
+      "title": "Introducing Gemini 3.8 Flash and 3.8 Flash Cyber",
+      "sourceName": "Google DeepMind",
+      "overallScore": 72,
+      "status": "candidate"
+    },
+    {
+      "title": "Modernizing and scaling support operations with generative AI on AWS",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 70,
+      "status": "candidate"
+    }
+  ]
+}
