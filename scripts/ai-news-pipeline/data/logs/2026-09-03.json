@@ -1,0 +1,69 @@
+{
+  "date": "2026-09-03",
+  "collected": 68,
+  "candidates": 9,
+  "draftsGenerated": 3,
+  "errors": [
+    {
+      "step": "collect",
+      "sourceId": "langchain-blog",
+      "message": "Invalid character in entity name\nLine: 0\nColumn: 2327\nChar: &"
+    }
+  ],
+  "items": [
+    {
+      "title": "Safety overview: GPT-6 Astra",
+      "sourceName": "OpenAI",
+      "overallScore": 82,
+      "status": "draft_created"
+    },
+    {
+      "title": "Migrate agentic workloads to Amazon Bedrock AgentCore",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 76,
+      "status": "draft_created"
+    },
+    {
+      "title": "AI-driven development lifecycle using Amazon Bedrock AgentCore",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 75,
+      "status": "draft_created"
+    },
+    {
+      "title": "Best practices for building agentic automations with Amazon Quick Automate",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 74,
+      "status": "candidate"
+    },
+    {
+      "title": "Legora reviewed 41 documents in minutes with GPT-6 Astra",
+      "sourceName": "OpenAI",
+      "overallScore": 73,
+      "status": "candidate"
+    },
+    {
+      "title": "Fine-tuning a 350M Model for Better Structured Outputs in 100 GRPO Steps",
+      "sourceName": "Hugging Face",
+      "overallScore": 72,
+      "status": "candidate"
+    },
+    {
+      "title": "Give Your Coding Agents a Memory You Own",
+      "sourceName": "Hugging Face",
+      "overallScore": 72,
+      "status": "candidate"
+    },
+    {
+      "title": "Integrating Outlook with Amazon Quick for AI-powered email automation",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 72,
+      "status": "candidate"
+    },
+    {
+      "title": "Workflow Security: Controls for Regulated Industries",
+      "sourceName": "n8n",
+      "overallScore": 71,
+      "status": "candidate"
+    }
+  ]
+}
