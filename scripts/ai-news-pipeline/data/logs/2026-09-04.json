@@ -1,0 +1,57 @@
+{
+  "date": "2026-09-04",
+  "collected": 54,
+  "candidates": 7,
+  "draftsGenerated": 3,
+  "errors": [
+    {
+      "step": "collect",
+      "sourceId": "langchain-blog",
+      "message": "Invalid character in entity name\nLine: 0\nColumn: 2327\nChar: &"
+    }
+  ],
+  "items": [
+    {
+      "title": "Designing lifecycle policies for AgentCore memory",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 78,
+      "status": "draft_created"
+    },
+    {
+      "title": "Deploy a multimodal WhatsApp ordering assistant with Amazon Bedrock AgentCore",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 76,
+      "status": "draft_created"
+    },
+    {
+      "title": "v2.1.261",
+      "sourceName": "Claude Code",
+      "overallScore": 75,
+      "status": "draft_created"
+    },
+    {
+      "title": "How Intuit built an agentic disaster recovery assistant with Amazon Bedrock",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 75,
+      "status": "candidate"
+    },
+    {
+      "title": "Build a Physical AI model factory with NVIDIA Cosmos 3 on SageMaker HyperPod",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 72,
+      "status": "candidate"
+    },
+    {
+      "title": "Run agent-driven Amazon SageMaker HyperPod operations with InstantStart",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 72,
+      "status": "candidate"
+    },
+    {
+      "title": "OpenAI's rogue agents were caught communicating via public wikis",
+      "sourceName": "Simon Willison's Weblog",
+      "overallScore": 72,
+      "status": "candidate"
+    }
+  ]
+}
