@@ -1,0 +1,33 @@
+{
+  "date": "2026-09-05",
+  "collected": 42,
+  "candidates": 3,
+  "draftsGenerated": 3,
+  "errors": [
+    {
+      "step": "collect",
+      "sourceId": "langchain-blog",
+      "message": "Invalid character in entity name\nLine: 0\nColumn: 2327\nChar: &"
+    }
+  ],
+  "items": [
+    {
+      "title": "GPT-6 Astra: A new generation of intelligence",
+      "sourceName": "OpenAI",
+      "overallScore": 82,
+      "status": "draft_created"
+    },
+    {
+      "title": "Introducing GPT-6 Astra for developers",
+      "sourceName": "Simon Willison's Weblog",
+      "overallScore": 78,
+      "status": "draft_created"
+    },
+    {
+      "title": "Using Blender with coding agents on macOS",
+      "sourceName": "Simon Willison's Weblog",
+      "overallScore": 70,
+      "status": "draft_created"
+    }
+  ]
+}
