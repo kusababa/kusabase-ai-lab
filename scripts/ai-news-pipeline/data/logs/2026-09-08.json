@@ -1,8 +1,8 @@
 {
   "date": "2026-09-08",
-  "collected": 24,
-  "candidates": 0,
-  "draftsGenerated": 0,
+  "collected": 46,
+  "candidates": 8,
+  "draftsGenerated": 3,
   "errors": [
     {
       "step": "collect",
@@ -10,5 +10,54 @@
       "message": "Invalid character in entity name\nLine: 0\nColumn: 2327\nChar: &"
     }
   ],
-  "items": []
+  "items": [
+    {
+      "title": "AlphaGenome Atlas: A predictive map of every possible DNA letter change in the human genome",
+      "sourceName": "Google DeepMind",
+      "overallScore": 81,
+      "status": "draft_created"
+    },
+    {
+      "title": "Take on your most ambitious work with GPT-6 Astra on Amazon Bedrock",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 75,
+      "status": "draft_created"
+    },
+    {
+      "title": "How HPE Zerto built an agentic troubleshooting system with Amazon Bedrock",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 75,
+      "status": "draft_created"
+    },
+    {
+      "title": "How GPT-5.6 Sol helps run quantum computing experiments",
+      "sourceName": "OpenAI",
+      "overallScore": 74,
+      "status": "candidate"
+    },
+    {
+      "title": "Automated agent evaluation with Amazon Bedrock AgentCore and GitHub Actions",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 74,
+      "status": "candidate"
+    },
+    {
+      "title": "AI Agent Reliability: Debug, Evaluate, and Monitor in Production",
+      "sourceName": "n8n",
+      "overallScore": 73,
+      "status": "candidate"
+    },
+    {
+      "title": "Introducing ChatGPT Images 2.5",
+      "sourceName": "OpenAI",
+      "overallScore": 72,
+      "status": "candidate"
+    },
+    {
+      "title": "Introducing ChatGPT Images 2.5",
+      "sourceName": "Simon Willison's Weblog",
+      "overallScore": 72,
+      "status": "candidate"
+    }
+  ]
 }
