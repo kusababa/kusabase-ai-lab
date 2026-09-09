@@ -1,0 +1,38 @@
+{
+  "date": "2026-09-09",
+  "collected": 54,
+  "candidates": 3,
+  "draftsGenerated": 2,
+  "errors": [
+    {
+      "step": "collect",
+      "sourceId": "langchain-blog",
+      "message": "Invalid character in entity name\nLine: 0\nColumn: 2327\nChar: &"
+    },
+    {
+      "step": "generate",
+      "sourceId": "aws-ml-blog",
+      "message": "[ICYMI: What landed for AI builders in August 2026] Claudeの応答をJSONとして解析できませんでした: Unterminated string in JSON at position 2102"
+    }
+  ],
+  "items": [
+    {
+      "title": "GPT-6 Astra: The next generation in intelligence for work",
+      "sourceName": "OpenAI",
+      "overallScore": 81,
+      "status": "draft_created"
+    },
+    {
+      "title": "ICYMI: What landed for AI builders in August 2026",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 75,
+      "status": "candidate"
+    },
+    {
+      "title": "Introducing n8n Assistant",
+      "sourceName": "n8n",
+      "overallScore": 70,
+      "status": "draft_created"
+    }
+  ]
+}
