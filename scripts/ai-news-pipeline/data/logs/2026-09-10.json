@@ -1,0 +1,75 @@
+{
+  "date": "2026-09-10",
+  "collected": 70,
+  "candidates": 10,
+  "draftsGenerated": 3,
+  "errors": [
+    {
+      "step": "collect",
+      "sourceId": "langchain-blog",
+      "message": "Invalid character in entity name\nLine: 0\nColumn: 2327\nChar: &"
+    }
+  ],
+  "items": [
+    {
+      "title": "Introducing the Agents API",
+      "sourceName": "OpenAI",
+      "overallScore": 82,
+      "status": "draft_created"
+    },
+    {
+      "title": "Cursor Projects",
+      "sourceName": "Cursor",
+      "overallScore": 82,
+      "status": "draft_created"
+    },
+    {
+      "title": "Autonomous AI Agents: Architecture and Risk Mitigation",
+      "sourceName": "n8n",
+      "overallScore": 79,
+      "status": "draft_created"
+    },
+    {
+      "title": "Build more natural voice experiences with GPT‑Live‑1 in the API",
+      "sourceName": "OpenAI",
+      "overallScore": 78,
+      "status": "candidate"
+    },
+    {
+      "title": "Agent Evaluation Metric for multi-turn conversations",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 78,
+      "status": "candidate"
+    },
+    {
+      "title": "Now everyone can put data to work",
+      "sourceName": "OpenAI",
+      "overallScore": 76,
+      "status": "candidate"
+    },
+    {
+      "title": "Model-agnostic PII detection with LLMs",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 76,
+      "status": "candidate"
+    },
+    {
+      "title": "How a researcher uses Codex and ChatGPT to search for new antimicrobial molecules",
+      "sourceName": "OpenAI",
+      "overallScore": 72,
+      "status": "candidate"
+    },
+    {
+      "title": "Introducing ChatGPT for Financial Services",
+      "sourceName": "OpenAI",
+      "overallScore": 72,
+      "status": "candidate"
+    },
+    {
+      "title": "Reduce LLM latency with prefix-aware routing on Amazon SageMaker Inference",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 70,
+      "status": "candidate"
+    }
+  ]
+}
