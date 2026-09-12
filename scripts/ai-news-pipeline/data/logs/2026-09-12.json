@@ -1,0 +1,57 @@
+{
+  "date": "2026-09-12",
+  "collected": 66,
+  "candidates": 7,
+  "draftsGenerated": 3,
+  "errors": [
+    {
+      "step": "collect",
+      "sourceId": "langchain-blog",
+      "message": "Invalid character in entity name\nLine: 0\nColumn: 2327\nChar: &"
+    }
+  ],
+  "items": [
+    {
+      "title": "Reflection Pattern: AI Agents Self-Correct in Production",
+      "sourceName": "n8n",
+      "overallScore": 79,
+      "status": "draft_created"
+    },
+    {
+      "title": "Rapidly scaling online storage to serve over 1 billion ChatGPT users",
+      "sourceName": "OpenAI",
+      "overallScore": 76,
+      "status": "draft_created"
+    },
+    {
+      "title": "Monitoring production agent lifecycle with AWS DevOps Agent and AgentCore Evaluations",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 76,
+      "status": "draft_created"
+    },
+    {
+      "title": "vaibhav07772/ai-drug-discovery（★1）",
+      "sourceName": "GitHub Trending AI（近似）",
+      "overallScore": 72,
+      "status": "candidate"
+    },
+    {
+      "title": "Process Orchestration: Execution Models, Observability, and Production Challenges",
+      "sourceName": "n8n",
+      "overallScore": 72,
+      "status": "candidate"
+    },
+    {
+      "title": "Build interactive MCP Apps using Amazon Bedrock AgentCore",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 72,
+      "status": "candidate"
+    },
+    {
+      "title": "Beyond the price per token: Choosing the right OpenAI model on Amazon Bedrock for your workload",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 70,
+      "status": "candidate"
+    }
+  ]
+}
