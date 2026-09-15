@@ -1,0 +1,45 @@
+{
+  "date": "2026-09-15",
+  "collected": 30,
+  "candidates": 5,
+  "draftsGenerated": 3,
+  "errors": [
+    {
+      "step": "collect",
+      "sourceId": "langchain-blog",
+      "message": "Invalid character in entity name\nLine: 0\nColumn: 2327\nChar: &"
+    }
+  ],
+  "items": [
+    {
+      "title": "Manage end-user OAuth consent for AI agents with Amazon Bedrock AgentCore",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 75,
+      "status": "draft_created"
+    },
+    {
+      "title": "DevFest is back",
+      "sourceName": "Google AI",
+      "overallScore": 73,
+      "status": "draft_created"
+    },
+    {
+      "title": "Abnormal AI: Amazon Bedrock AgentCore for agentic email security at scale",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 72,
+      "status": "draft_created"
+    },
+    {
+      "title": "Automate replenishment with MMF, Databricks Genie, and Amazon Quick",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 71,
+      "status": "candidate"
+    },
+    {
+      "title": "The generative AI customization spectrum: From prompt engineering to custom models on AWS",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 70,
+      "status": "candidate"
+    }
+  ]
+}
