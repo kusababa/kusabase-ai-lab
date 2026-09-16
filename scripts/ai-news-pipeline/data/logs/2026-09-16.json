@@ -1,0 +1,39 @@
+{
+  "date": "2026-09-16",
+  "collected": 37,
+  "candidates": 4,
+  "draftsGenerated": 3,
+  "errors": [
+    {
+      "step": "collect",
+      "sourceId": "langchain-blog",
+      "message": "Invalid character in entity name\nLine: 0\nColumn: 2327\nChar: &"
+    }
+  ],
+  "items": [
+    {
+      "title": "Introducing Gemini 3.8 Live and 3.8 Live Extended Thinking",
+      "sourceName": "Google DeepMind",
+      "overallScore": 78,
+      "status": "draft_created"
+    },
+    {
+      "title": "Your Agent Aced the Task. Will It Do It Again?",
+      "sourceName": "Hugging Face",
+      "overallScore": 72,
+      "status": "draft_created"
+    },
+    {
+      "title": "Optimizing cost and latency with Amazon Bedrock prompt caching",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 72,
+      "status": "draft_created"
+    },
+    {
+      "title": "CodeStreet-ai/always-on-memory-agent（★1）",
+      "sourceName": "GitHub Trending AI（近似）",
+      "overallScore": 71,
+      "status": "candidate"
+    }
+  ]
+}
