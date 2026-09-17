@@ -1,0 +1,39 @@
+{
+  "date": "2026-09-17",
+  "collected": 48,
+  "candidates": 4,
+  "draftsGenerated": 3,
+  "errors": [
+    {
+      "step": "collect",
+      "sourceId": "langchain-blog",
+      "message": "Invalid character in entity name\nLine: 0\nColumn: 2327\nChar: &"
+    }
+  ],
+  "items": [
+    {
+      "title": "Improving HCLS AI reasoning with open-source agent skills",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 81,
+      "status": "draft_created"
+    },
+    {
+      "title": "Optimizing agent system prompts with Amazon Bedrock AgentCore",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 76,
+      "status": "draft_created"
+    },
+    {
+      "title": "Reimagining advertising with AI",
+      "sourceName": "OpenAI",
+      "overallScore": 71,
+      "status": "draft_created"
+    },
+    {
+      "title": "Our framework for reporting model misalignment",
+      "sourceName": "OpenAI",
+      "overallScore": 70,
+      "status": "candidate"
+    }
+  ]
+}
