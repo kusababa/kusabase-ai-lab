@@ -1,0 +1,27 @@
+{
+  "date": "2026-09-18",
+  "collected": 50,
+  "candidates": 2,
+  "draftsGenerated": 2,
+  "errors": [
+    {
+      "step": "collect",
+      "sourceId": "langchain-blog",
+      "message": "Invalid character in entity name\nLine: 0\nColumn: 2327\nChar: &"
+    }
+  ],
+  "items": [
+    {
+      "title": "A shared agentic platform for Wood Mackenzie, on Amazon Bedrock AgentCore",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 80,
+      "status": "draft_created"
+    },
+    {
+      "title": "Implementing defense-in-depth authorization for MCP tools on Amazon Quick",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 72,
+      "status": "draft_created"
+    }
+  ]
+}
