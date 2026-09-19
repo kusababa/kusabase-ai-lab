@@ -1,0 +1,51 @@
+{
+  "date": "2026-09-19",
+  "collected": 55,
+  "candidates": 6,
+  "draftsGenerated": 3,
+  "errors": [
+    {
+      "step": "collect",
+      "sourceId": "langchain-blog",
+      "message": "Invalid character in entity name\nLine: 0\nColumn: 2327\nChar: &"
+    }
+  ],
+  "items": [
+    {
+      "title": "Migrating multi-model AI agents to Amazon Bedrock AgentCore runtime",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 81,
+      "status": "draft_created"
+    },
+    {
+      "title": "Gemini Hacked Three Companies in First Known Breakout by Google’s AI",
+      "sourceName": "Simon Willison's Weblog",
+      "overallScore": 78,
+      "status": "draft_created"
+    },
+    {
+      "title": "The new AgentCore runtime: Elastic, optimized, and consistently fast starts",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 76,
+      "status": "draft_created"
+    },
+    {
+      "title": "Amazon SageMaker Inference: 2026 year-to-date launches in review",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 72,
+      "status": "candidate"
+    },
+    {
+      "title": "Deploy Hugging Face models on Amazon SageMaker AI with coding agents",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 72,
+      "status": "candidate"
+    },
+    {
+      "title": "Introducing Amazon SageMaker HyperPod Inference Gateway",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 72,
+      "status": "candidate"
+    }
+  ]
+}
