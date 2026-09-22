@@ -1,0 +1,33 @@
+{
+  "date": "2026-09-22",
+  "collected": 34,
+  "candidates": 3,
+  "draftsGenerated": 3,
+  "errors": [
+    {
+      "step": "collect",
+      "sourceId": "langchain-blog",
+      "message": "Invalid character in entity name\nLine: 0\nColumn: 2327\nChar: &"
+    }
+  ],
+  "items": [
+    {
+      "title": "How V7 gives AI agents institutional memory",
+      "sourceName": "OpenAI",
+      "overallScore": 78,
+      "status": "draft_created"
+    },
+    {
+      "title": "How Benchling secured multi-tenant AI agents with Amazon Bedrock AgentCore",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 76,
+      "status": "draft_created"
+    },
+    {
+      "title": "MCP was always a bad idea?",
+      "sourceName": "Simon Willison's Weblog",
+      "overallScore": 72,
+      "status": "draft_created"
+    }
+  ]
+}
