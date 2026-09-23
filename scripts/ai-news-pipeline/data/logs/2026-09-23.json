@@ -1,0 +1,75 @@
+{
+  "date": "2026-09-23",
+  "collected": 50,
+  "candidates": 10,
+  "draftsGenerated": 3,
+  "errors": [
+    {
+      "step": "collect",
+      "sourceId": "langchain-blog",
+      "message": "Invalid character in entity name\nLine: 0\nColumn: 2327\nChar: &"
+    }
+  ],
+  "items": [
+    {
+      "title": "Introducing GPT-6 Sol and Luna",
+      "sourceName": "OpenAI",
+      "overallScore": 82,
+      "status": "draft_created"
+    },
+    {
+      "title": "Claude Opus 5.5 is now available on AWS",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 82,
+      "status": "draft_created"
+    },
+    {
+      "title": "Evaluate skill-equipped agents with Strands Evals and Amazon Bedrock AgentCore",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 78,
+      "status": "draft_created"
+    },
+    {
+      "title": "Claude Opus 5.5, GPT-6 Sol, GPT-6 Luna, and a new price war",
+      "sourceName": "Simon Willison's Weblog",
+      "overallScore": 78,
+      "status": "candidate"
+    },
+    {
+      "title": "Parallel cut research time and cost in half with GPT‑6 Astra",
+      "sourceName": "OpenAI",
+      "overallScore": 74,
+      "status": "candidate"
+    },
+    {
+      "title": "How Trane gets building insights 60x faster with Amazon Bedrock AgentCore",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 74,
+      "status": "candidate"
+    },
+    {
+      "title": "v2.1.280",
+      "sourceName": "Claude Code",
+      "overallScore": 72,
+      "status": "candidate"
+    },
+    {
+      "title": "Transformers now runs llama.cpp quants",
+      "sourceName": "Hugging Face",
+      "overallScore": 72,
+      "status": "candidate"
+    },
+    {
+      "title": "How Reactiv automates mobile commerce 80% faster with Amazon Bedrock AgentCore",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 72,
+      "status": "candidate"
+    },
+    {
+      "title": "Bring more intelligence to everyday work with GPT-6 Sol and GPT-6 Luna on Amazon Bedrock",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 70,
+      "status": "candidate"
+    }
+  ]
+}
