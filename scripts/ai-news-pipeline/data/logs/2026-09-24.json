@@ -1,0 +1,51 @@
+{
+  "date": "2026-09-24",
+  "collected": 65,
+  "candidates": 6,
+  "draftsGenerated": 3,
+  "errors": [
+    {
+      "step": "collect",
+      "sourceId": "langchain-blog",
+      "message": "Invalid character in entity name\nLine: 0\nColumn: 2715\nChar: &"
+    }
+  ],
+  "items": [
+    {
+      "title": "Use open weight models as your AI coding agent with Amazon Bedrock",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 78,
+      "status": "draft_created"
+    },
+    {
+      "title": "Ringg’s AI agents resolve up to 65% of customer calls with OpenAI",
+      "sourceName": "OpenAI",
+      "overallScore": 76,
+      "status": "draft_created"
+    },
+    {
+      "title": "Gemini 3.8 text-to-speech says hello",
+      "sourceName": "Google DeepMind",
+      "overallScore": 75,
+      "status": "draft_created"
+    },
+    {
+      "title": "Agentic conversational video intelligence built on AWS",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 75,
+      "status": "candidate"
+    },
+    {
+      "title": "Harvey turns legal context into stronger drafts with GPT-6 Astra",
+      "sourceName": "OpenAI",
+      "overallScore": 72,
+      "status": "candidate"
+    },
+    {
+      "title": "Rollouts and Security Review",
+      "sourceName": "Cursor",
+      "overallScore": 72,
+      "status": "candidate"
+    }
+  ]
+}
