@@ -1,0 +1,27 @@
+{
+  "date": "2026-09-25",
+  "collected": 57,
+  "candidates": 2,
+  "draftsGenerated": 2,
+  "errors": [
+    {
+      "step": "collect",
+      "sourceId": "langchain-blog",
+      "message": "Invalid character in entity name\nLine: 0\nColumn: 2715\nChar: &"
+    }
+  ],
+  "items": [
+    {
+      "title": "Build a multi-account AI agent with AgentCore Gateway and MCP",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 76,
+      "status": "draft_created"
+    },
+    {
+      "title": "Introducing Gemini 3.8 Live with Live Avatar",
+      "sourceName": "Google DeepMind",
+      "overallScore": 75,
+      "status": "draft_created"
+    }
+  ]
+}
