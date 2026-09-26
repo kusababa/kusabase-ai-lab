@@ -1,0 +1,21 @@
+{
+  "date": "2026-09-26",
+  "collected": 50,
+  "candidates": 1,
+  "draftsGenerated": 1,
+  "errors": [
+    {
+      "step": "collect",
+      "sourceId": "langchain-blog",
+      "message": "Invalid character in entity name\nLine: 0\nColumn: 2715\nChar: &"
+    }
+  ],
+  "items": [
+    {
+      "title": "Introducing n8n Agents",
+      "sourceName": "n8n",
+      "overallScore": 75,
+      "status": "draft_created"
+    }
+  ]
+}
