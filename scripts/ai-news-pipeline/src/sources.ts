@@ -100,7 +100,8 @@ export const NEWS_SOURCES: NewsSource[] = [
     tier: 'mid',
     type: 'rss',
     url: 'https://blog.langchain.dev/rss/',
-    enabled: true,
+    enabled: false,
+    note: 'フィード内の不正なエンティティ（未エスケープの&）によりXMLパースが恒常的に失敗するため無効化（2026-09-28時点で少なくとも数週間継続）。フィード側の修正か、別実装での対応まで保留',
   },
   {
     id: 'n8n-blog',
