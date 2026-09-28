@@ -4,8 +4,9 @@ import { requestJson, SCORING_MODEL } from './claude-client'
 import { loadSeen, saveSeen, todayIso } from './storage'
 import type { NewsItem, PipelineError, ScoredItem, ScoreResult } from './types'
 
-const SCORE_THRESHOLD = 70
-const MAX_DRAFTS_PER_DAY = Number(process.env.MAX_DRAFTS_PER_DAY ?? 3)
+// 記事の質を優先し、1日1投稿程度に絞るため2026-09-28に70→75へ引き上げ（過去実績上、75なら候補0件になる日は少数に留まる）
+const SCORE_THRESHOLD = 75
+const MAX_DRAFTS_PER_DAY = Number(process.env.MAX_DRAFTS_PER_DAY ?? 1)
 
 // collect.ts側の不具合・想定外のフィード仕様変更等で異常な件数が来た場合でも、
 // API課金が青天井にならないようスコアリング件数そのものに上限を設ける（二重の保険）
