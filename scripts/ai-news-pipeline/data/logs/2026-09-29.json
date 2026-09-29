@@ -1,0 +1,21 @@
+{
+  "date": "2026-09-29",
+  "collected": 30,
+  "candidates": 2,
+  "draftsGenerated": 1,
+  "errors": [],
+  "items": [
+    {
+      "title": "Holo4: powering generalist computer-use agents",
+      "sourceName": "Hugging Face",
+      "overallScore": 82,
+      "status": "draft_created"
+    },
+    {
+      "title": "Claude Sonnet 5.5",
+      "sourceName": "Simon Willison's Weblog",
+      "overallScore": 78,
+      "status": "candidate"
+    }
+  ]
+}
