@@ -1,0 +1,33 @@
+{
+  "date": "2026-09-30",
+  "collected": 44,
+  "candidates": 4,
+  "draftsGenerated": 1,
+  "errors": [],
+  "items": [
+    {
+      "title": "DevDay 2026 Recap",
+      "sourceName": "OpenAI",
+      "overallScore": 82,
+      "status": "draft_created"
+    },
+    {
+      "title": "Introducing GPT-6.1 Sol",
+      "sourceName": "OpenAI",
+      "overallScore": 78,
+      "status": "candidate"
+    },
+    {
+      "title": "Towards safety cases for frontier AI training",
+      "sourceName": "OpenAI",
+      "overallScore": 75,
+      "status": "candidate"
+    },
+    {
+      "title": "OpenAI DevDay 2026 live blog",
+      "sourceName": "Simon Willison's Weblog",
+      "overallScore": 75,
+      "status": "candidate"
+    }
+  ]
+}
