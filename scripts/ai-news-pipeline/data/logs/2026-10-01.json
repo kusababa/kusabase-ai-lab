@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-01",
+  "collected": 51,
+  "candidates": 2,
+  "draftsGenerated": 1,
+  "errors": [],
+  "items": [
+    {
+      "title": "Gemini 4 Argon: our next era of frontier intelligence",
+      "sourceName": "Google DeepMind",
+      "overallScore": 82,
+      "status": "draft_created"
+    },
+    {
+      "title": "Build a multi-agent music production pipeline on Amazon Bedrock AgentCore Runtime Instances",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 75,
+      "status": "candidate"
+    }
+  ]
+}
