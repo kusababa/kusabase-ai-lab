@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-02",
+  "collected": 51,
+  "candidates": 2,
+  "draftsGenerated": 0,
+  "errors": [
+    {
+      "step": "collect",
+      "sourceId": "deepmind-blog",
+      "message": "Non-whitespace before first tag.\nLine: 0\nColumn: 1\nChar: \u001f"
+    },
+    {
+      "step": "generate",
+      "sourceId": "aws-ml-blog",
+      "message": "[Building ambient agents with Amazon Bedrock AgentCore: From event-driven signals to human-in-the-loop workflows] Claudeの応答をJSONとして解析できませんでした: Unterminated string in JSON at position 2510"
+    }
+  ],
+  "items": [
+    {
+      "title": "Building ambient agents with Amazon Bedrock AgentCore: From event-driven signals to human-in-the-loop workflows",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 80,
+      "status": "candidate"
+    },
+    {
+      "title": "Scaling cloud migrations with agentic AI on Amazon Bedrock AgentCore",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 75,
+      "status": "candidate"
+    }
+  ]
+}
