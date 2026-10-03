@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-03",
+  "collected": 46,
+  "candidates": 3,
+  "draftsGenerated": 1,
+  "errors": [],
+  "items": [
+    {
+      "title": "A model guide for the GPT-6 family",
+      "sourceName": "OpenAI",
+      "overallScore": 82,
+      "status": "draft_created"
+    },
+    {
+      "title": "Fine-tune a search agent with multi-turn RL on Amazon SageMaker AI",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 76,
+      "status": "candidate"
+    },
+    {
+      "title": "AutoSynthData: Generating Training Data for Enterprise Agents",
+      "sourceName": "Hugging Face",
+      "overallScore": 75,
+      "status": "candidate"
+    }
+  ]
+}
