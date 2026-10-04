@@ -1082,5 +1082,20 @@
   "https://huggingface.co/blog/ServiceNow-AI/autosynthdata": "2026-10-03",
   "https://aws.amazon.com/blogs/machine-learning/sweep-thousands-of-leases-for-compliance-using-amazon-quick-and-the-adjudicated-query-pattern/": "2026-10-03",
   "https://aws.amazon.com/blogs/machine-learning/add-secure-web-search-to-claude-desktop-with-amazon-bedrock-agentcore/": "2026-10-03",
-  "https://aws.amazon.com/blogs/machine-learning/fine-tune-a-search-agent-with-multi-turn-rl-on-amazon-sagemaker-ai/": "2026-10-03"
+  "https://aws.amazon.com/blogs/machine-learning/fine-tune-a-search-agent-with-multi-turn-rl-on-amazon-sagemaker-ai/": "2026-10-03",
+  "https://github.com/anthropics/claude-code/releases/tag/v2.1.289": "2026-10-04",
+  "https://github.com/sebastianhaba/book-to-course-skill": "2026-10-04",
+  "https://github.com/CogniBlock/CogniBlock": "2026-10-04",
+  "https://github.com/hbk2636/neshank": "2026-10-04",
+  "https://github.com/MrSheerluck/smbl-relay": "2026-10-04",
+  "https://github.com/0xgetz/deepseek2api": "2026-10-04",
+  "https://github.com/lopadova/jarvis-desktop": "2026-10-04",
+  "https://github.com/Prateekbala/Codewatch": "2026-10-04",
+  "https://github.com/ianwieds/awesome-ai-agents": "2026-10-04",
+  "https://github.com/AminZibayi/tdl-aiexport": "2026-10-04",
+  "https://github.com/Zhihua-Lee/marklore": "2026-10-04",
+  "https://huggingface.co/blog/microsoft/thinkingbox": "2026-10-04",
+  "https://simonwillison.net/2026/Oct/3/default-hard-budget-caps/": "2026-10-04",
+  "https://simonwillison.net/2026/Oct/3/newsletter/": "2026-10-04",
+  "https://simonwillison.net/2026/Oct/2/rex-s-dino-store/": "2026-10-04"
 }
