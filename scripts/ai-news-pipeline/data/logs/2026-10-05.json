@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-05",
+  "collected": 23,
+  "candidates": 0,
+  "draftsGenerated": 0,
+  "errors": [
+    {
+      "step": "collect",
+      "sourceId": "deepmind-blog",
+      "message": "Non-whitespace before first tag.\nLine: 0\nColumn: 1\nChar: \u001f"
+    }
+  ],
+  "items": []
+}
