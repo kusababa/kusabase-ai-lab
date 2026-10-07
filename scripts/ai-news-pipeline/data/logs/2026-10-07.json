@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-07",
+  "collected": 46,
+  "candidates": 2,
+  "draftsGenerated": 1,
+  "errors": [],
+  "items": [
+    {
+      "title": "Building a context-aware AI assistant on AgentCore and OpenClaw",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 78,
+      "status": "draft_created"
+    },
+    {
+      "title": "Build a voice travel concierge with Amazon Bedrock AgentCore, Managed Knowledge Base and Nova Sonic",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 75,
+      "status": "candidate"
+    }
+  ]
+}
