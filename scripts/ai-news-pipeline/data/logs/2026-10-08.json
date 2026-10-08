@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-08",
+  "collected": 61,
+  "candidates": 3,
+  "draftsGenerated": 1,
+  "errors": [
+    {
+      "step": "collect",
+      "sourceId": "deepmind-blog",
+      "message": "Non-whitespace before first tag.\nLine: 0\nColumn: 1\nChar: \u001f"
+    }
+  ],
+  "items": [
+    {
+      "title": "GPT-6 and Intelligent UI for everyone",
+      "sourceName": "OpenAI",
+      "overallScore": 82,
+      "status": "draft_created"
+    },
+    {
+      "title": "v2.1.293",
+      "sourceName": "Claude Code",
+      "overallScore": 77,
+      "status": "candidate"
+    },
+    {
+      "title": "Beyond hours saved: Building the business case for agentic automation",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 75,
+      "status": "candidate"
+    }
+  ]
+}
