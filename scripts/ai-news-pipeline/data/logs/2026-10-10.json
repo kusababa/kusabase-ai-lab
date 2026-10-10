@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-10",
+  "collected": 50,
+  "candidates": 2,
+  "draftsGenerated": 1,
+  "errors": [
+    {
+      "step": "collect",
+      "sourceId": "deepmind-blog",
+      "message": "Non-whitespace before first tag.\nLine: 0\nColumn: 1\nChar: \u001f"
+    }
+  ],
+  "items": [
+    {
+      "title": "How Postman runs Agent Mode for 40 million developers on Amazon Bedrock",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 79,
+      "status": "draft_created"
+    },
+    {
+      "title": "Asana cuts model costs 76x in browser tests with GPT-6.1 Sol",
+      "sourceName": "OpenAI",
+      "overallScore": 75,
+      "status": "candidate"
+    }
+  ]
+}
