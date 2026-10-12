@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-12",
+  "collected": 23,
+  "candidates": 1,
+  "draftsGenerated": 1,
+  "errors": [],
+  "items": [
+    {
+      "title": "v1.0.0",
+      "sourceName": "MCP (modelcontextprotocol/servers)",
+      "overallScore": 82,
+      "status": "draft_created"
+    }
+  ]
+}
