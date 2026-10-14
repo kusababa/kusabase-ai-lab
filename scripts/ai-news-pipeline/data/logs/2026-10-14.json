@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-14",
+  "collected": 39,
+  "candidates": 5,
+  "draftsGenerated": 1,
+  "errors": [],
+  "items": [
+    {
+      "title": "Gemini 4 Argon: Built to solve your hardest problems",
+      "sourceName": "Google AI",
+      "overallScore": 82,
+      "status": "draft_created"
+    },
+    {
+      "title": "Gemini 4 Argon for Robotics",
+      "sourceName": "Google DeepMind",
+      "overallScore": 75,
+      "status": "candidate"
+    },
+    {
+      "title": "Run fast, private agents on-device with LFM2.5-24B-A2B",
+      "sourceName": "Hugging Face",
+      "overallScore": 75,
+      "status": "candidate"
+    },
+    {
+      "title": "Build n8n workflows with Gemini 4 Argon: MCP, the Assistant, and Agents",
+      "sourceName": "n8n",
+      "overallScore": 75,
+      "status": "candidate"
+    },
+    {
+      "title": "Building agents that transact with Anchor Browser and AgentCore payments",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 75,
+      "status": "candidate"
+    }
+  ]
+}
