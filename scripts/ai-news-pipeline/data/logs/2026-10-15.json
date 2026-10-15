@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-15",
+  "collected": 53,
+  "candidates": 3,
+  "draftsGenerated": 1,
+  "errors": [],
+  "items": [
+    {
+      "title": "How Third Moment Research runs 10,000 agents for 36+ hours",
+      "sourceName": "OpenAI",
+      "overallScore": 82,
+      "status": "draft_created"
+    },
+    {
+      "title": "Amp puts AI agents to work beyond code with OpenAI models",
+      "sourceName": "OpenAI",
+      "overallScore": 76,
+      "status": "candidate"
+    },
+    {
+      "title": "Generate presentations with Amazon Bedrock AgentCore",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 76,
+      "status": "candidate"
+    }
+  ]
+}
