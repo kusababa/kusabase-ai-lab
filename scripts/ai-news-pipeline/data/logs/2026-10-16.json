@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-16",
+  "collected": 49,
+  "candidates": 3,
+  "draftsGenerated": 1,
+  "errors": [
+    {
+      "step": "collect",
+      "sourceId": "deepmind-blog",
+      "message": "Non-whitespace before first tag.\nLine: 0\nColumn: 1\nChar: \u001f"
+    },
+    {
+      "step": "score",
+      "sourceId": "simonwillison-blog",
+      "message": "[Chirp Pong] Claudeの応答をJSONとして解析できませんでした: Unexpected token '申', \"申し訳ございませんが\"... is not valid JSON"
+    }
+  ],
+  "items": [
+    {
+      "title": "Welcome Muse Spark Open: open-weight frontier multimodal mixture-of-experts model from Meta",
+      "sourceName": "Hugging Face",
+      "overallScore": 78,
+      "status": "draft_created"
+    },
+    {
+      "title": "Trust in Depth: Giving agents more autonomy without losing control",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 78,
+      "status": "candidate"
+    },
+    {
+      "title": "Anthropic tells investors quarterly revenue up nearly 50% to $16.8bn ahead of IPO",
+      "sourceName": "Simon Willison's Weblog",
+      "overallScore": 75,
+      "status": "candidate"
+    }
+  ]
+}
