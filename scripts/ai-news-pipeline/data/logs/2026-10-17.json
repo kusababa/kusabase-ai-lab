@@ -1,27 +1,8 @@
 {
   "date": "2026-10-17",
-  "collected": 47,
-  "candidates": 3,
-  "draftsGenerated": 1,
+  "collected": 34,
+  "candidates": 0,
+  "draftsGenerated": 0,
   "errors": [],
-  "items": [
-    {
-      "title": "Building trust in AI agents: A production-ready evaluation framework with Amazon Bedrock AgentCore",
-      "sourceName": "AWS Machine Learning Blog",
-      "overallScore": 79,
-      "status": "draft_created"
-    },
-    {
-      "title": "Stack Overflow for Agents triples signups with ChatGPT plugin",
-      "sourceName": "OpenAI",
-      "overallScore": 78,
-      "status": "candidate"
-    },
-    {
-      "title": "Welcome Beam: a 501B open model you can own, customize, and scale",
-      "sourceName": "Hugging Face",
-      "overallScore": 75,
-      "status": "candidate"
-    }
-  ]
+  "items": []
 }
