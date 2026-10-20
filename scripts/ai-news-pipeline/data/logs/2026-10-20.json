@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-20",
+  "collected": 29,
+  "candidates": 2,
+  "draftsGenerated": 1,
+  "errors": [],
+  "items": [
+    {
+      "title": "Structured outputs for Anthropic Claude models on Amazon Bedrock",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 76,
+      "status": "draft_created"
+    },
+    {
+      "title": "Improve TTFT for multi-turn agentic workloads with bi-directional KV transfer in vLLM",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 76,
+      "status": "candidate"
+    }
+  ]
+}
