@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-21",
+  "collected": 51,
+  "candidates": 4,
+  "draftsGenerated": 1,
+  "errors": [
+    {
+      "step": "collect",
+      "sourceId": "deepmind-blog",
+      "message": "Non-whitespace before first tag.\nLine: 0\nColumn: 1\nChar: \u001f"
+    }
+  ],
+  "items": [
+    {
+      "title": "Discover tools at runtime with AWS Agent Registry",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 82,
+      "status": "draft_created"
+    },
+    {
+      "title": "Securing AI agent identity with X.509 PKI on AWS",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 78,
+      "status": "candidate"
+    },
+    {
+      "title": "How Eon built multi-cloud investigation with an MCP Gateway on Amazon Bedrock AgentCore",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 76,
+      "status": "candidate"
+    },
+    {
+      "title": "NVIDIA Cosmos3-H-Dreams: Bringing Clinical Surgery to Life Through Generative Simulation",
+      "sourceName": "Hugging Face",
+      "overallScore": 75,
+      "status": "candidate"
+    }
+  ]
+}
