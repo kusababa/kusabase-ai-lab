@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-22",
+  "collected": 65,
+  "candidates": 4,
+  "draftsGenerated": 1,
+  "errors": [],
+  "items": [
+    {
+      "title": "Using thousands of AI agents to uncover new leads in biological data",
+      "sourceName": "OpenAI",
+      "overallScore": 82,
+      "status": "draft_created"
+    },
+    {
+      "title": "5 production challenges in multi-agent systems and how Deep Insight solved them",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 82,
+      "status": "candidate"
+    },
+    {
+      "title": "Adaptive agentic intelligence framework using Strands Agents",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 76,
+      "status": "candidate"
+    },
+    {
+      "title": "OpenAI models are coming to Google Cloud",
+      "sourceName": "OpenAI",
+      "overallScore": 75,
+      "status": "candidate"
+    }
+  ]
+}
