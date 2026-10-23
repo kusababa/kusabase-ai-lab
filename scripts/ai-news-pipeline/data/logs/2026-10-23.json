@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-23",
+  "collected": 70,
+  "candidates": 5,
+  "draftsGenerated": 1,
+  "errors": [],
+  "items": [
+    {
+      "title": "Hallucination Detection Methods for AI Agent Workflows",
+      "sourceName": "n8n",
+      "overallScore": 79,
+      "status": "draft_created"
+    },
+    {
+      "title": "Build more responsive apps with the Decisions API",
+      "sourceName": "OpenAI",
+      "overallScore": 78,
+      "status": "candidate"
+    },
+    {
+      "title": "Stateful vs. Stateless: Managing Context in AI Agent Builds",
+      "sourceName": "n8n",
+      "overallScore": 75,
+      "status": "candidate"
+    },
+    {
+      "title": "Self-Hosted LLM vs. Cloud APIs: How to Route Between Them",
+      "sourceName": "n8n",
+      "overallScore": 75,
+      "status": "candidate"
+    },
+    {
+      "title": "Stream low-latency speech from AI agents using Kokoro TTS on Amazon SageMaker AI",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 75,
+      "status": "candidate"
+    }
+  ]
+}
