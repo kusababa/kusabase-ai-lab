@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-24",
+  "collected": 67,
+  "candidates": 1,
+  "draftsGenerated": 1,
+  "errors": [],
+  "items": [
+    {
+      "title": "AI Agent Memory: How LLM Agents Manage State in Production",
+      "sourceName": "n8n",
+      "overallScore": 78,
+      "status": "draft_created"
+    }
+  ]
+}
