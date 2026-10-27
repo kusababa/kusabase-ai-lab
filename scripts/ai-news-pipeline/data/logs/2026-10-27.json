@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-27",
+  "collected": 29,
+  "candidates": 3,
+  "draftsGenerated": 1,
+  "errors": [],
+  "items": [
+    {
+      "title": "Introducing GPT-6.1 Terra",
+      "sourceName": "OpenAI",
+      "overallScore": 78,
+      "status": "draft_created"
+    },
+    {
+      "title": "Groundhog Day for AI agents: Prompt caching patterns for using OpenAI models on Amazon Bedrock",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 75,
+      "status": "candidate"
+    },
+    {
+      "title": "Build agentic retrieval on a Managed Amazon Bedrock Knowledge Base with CDK",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 75,
+      "status": "candidate"
+    }
+  ]
+}
