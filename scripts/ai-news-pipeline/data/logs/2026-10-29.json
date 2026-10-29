@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-29",
+  "collected": 50,
+  "candidates": 5,
+  "draftsGenerated": 1,
+  "errors": [],
+  "items": [
+    {
+      "title": "Building an Agentic AI Platform on Amazon Bedrock AgentCore",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 82,
+      "status": "draft_created"
+    },
+    {
+      "title": "Gemini 4 Carbon: Our next frontier model",
+      "sourceName": "Google DeepMind",
+      "overallScore": 78,
+      "status": "candidate"
+    },
+    {
+      "title": "Genie 4: A new generation of world simulation",
+      "sourceName": "Google DeepMind",
+      "overallScore": 78,
+      "status": "candidate"
+    },
+    {
+      "title": "The future of the firm",
+      "sourceName": "OpenAI",
+      "overallScore": 76,
+      "status": "candidate"
+    },
+    {
+      "title": "Accelerating software delivery with agentic QA automation using Amazon Nova Act – Part 3",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 75,
+      "status": "candidate"
+    }
+  ]
+}
