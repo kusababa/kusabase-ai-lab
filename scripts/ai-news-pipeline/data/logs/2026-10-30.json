@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-30",
+  "collected": 53,
+  "candidates": 4,
+  "draftsGenerated": 1,
+  "errors": [],
+  "items": [
+    {
+      "title": "An updated Model Spec for more capable and beneficial AI",
+      "sourceName": "OpenAI",
+      "overallScore": 78,
+      "status": "draft_created"
+    },
+    {
+      "title": "Welcome Le Chonk: Mistral Large 4 on Hugging Face",
+      "sourceName": "Hugging Face",
+      "overallScore": 78,
+      "status": "candidate"
+    },
+    {
+      "title": "How MoEngage turned over 400 APIs into agent tools with AgentCore Gateway",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 75,
+      "status": "candidate"
+    },
+    {
+      "title": "Accelerate agentic AI with NVIDIA Nemotron models on Amazon EKS and SageMaker HyperPod EKS",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 75,
+      "status": "candidate"
+    }
+  ]
+}
