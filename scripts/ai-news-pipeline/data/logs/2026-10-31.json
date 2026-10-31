@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-31",
+  "collected": 52,
+  "candidates": 1,
+  "draftsGenerated": 1,
+  "errors": [],
+  "items": [
+    {
+      "title": "Preview web apps live as your coding agent builds them with Amazon Bedrock AgentCore runtime",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 75,
+      "status": "draft_created"
+    }
+  ]
+}
