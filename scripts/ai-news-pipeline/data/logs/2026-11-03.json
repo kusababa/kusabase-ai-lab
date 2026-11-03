@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-03",
+  "collected": 29,
+  "candidates": 2,
+  "draftsGenerated": 1,
+  "errors": [
+    {
+      "step": "collect",
+      "sourceId": "deepmind-blog",
+      "message": "Non-whitespace before first tag.\nLine: 0\nColumn: 1\nChar: \u001f"
+    }
+  ],
+  "items": [
+    {
+      "title": "Agentic engineering intelligence with Amazon Nova Multimodal Embeddings and Amazon Bedrock AgentCore",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 78,
+      "status": "draft_created"
+    },
+    {
+      "title": "Build efficient agents with knowledge distillation on Amazon SageMaker AI",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 76,
+      "status": "candidate"
+    }
+  ]
+}
