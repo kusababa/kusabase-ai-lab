@@ -1,0 +1,33 @@
+{
+  "date": "2026-11-05",
+  "collected": 58,
+  "candidates": 4,
+  "draftsGenerated": 1,
+  "errors": [],
+  "items": [
+    {
+      "title": "Agentic cheminformatics with Google Antigravity",
+      "sourceName": "Google DeepMind",
+      "overallScore": 81,
+      "status": "draft_created"
+    },
+    {
+      "title": "A thousand fewer paths to root",
+      "sourceName": "OpenAI",
+      "overallScore": 78,
+      "status": "candidate"
+    },
+    {
+      "title": "Four layers of context engineering for production AI agents: How Deep Insight applies them in working code",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 76,
+      "status": "candidate"
+    },
+    {
+      "title": "How U Mobile built agentic telco operations with Amazon Bedrock AgentCore",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 76,
+      "status": "candidate"
+    }
+  ]
+}
