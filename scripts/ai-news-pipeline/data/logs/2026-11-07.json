@@ -1,0 +1,45 @@
+{
+  "date": "2026-11-07",
+  "collected": 51,
+  "candidates": 5,
+  "draftsGenerated": 0,
+  "errors": [
+    {
+      "step": "generate",
+      "sourceId": "aws-ml-blog",
+      "message": "[Taxonomy of agentic primitives in Amazon Quick] Claudeの応答をJSONとして解析できませんでした: Unterminated string in JSON at position 1870"
+    }
+  ],
+  "items": [
+    {
+      "title": "Taxonomy of agentic primitives in Amazon Quick",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 78,
+      "status": "candidate"
+    },
+    {
+      "title": "Extend Claude Code to remote sessions on Amazon Bedrock AgentCore with security controls",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 78,
+      "status": "candidate"
+    },
+    {
+      "title": "Measuring how AI agents handle everyday wet-lab science",
+      "sourceName": "OpenAI",
+      "overallScore": 76,
+      "status": "candidate"
+    },
+    {
+      "title": "Voice Chat with Agents",
+      "sourceName": "Cursor",
+      "overallScore": 76,
+      "status": "candidate"
+    },
+    {
+      "title": "Govern AI agent access with Okta Cross App Access and Amazon Bedrock AgentCore – Part 2",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 75,
+      "status": "candidate"
+    }
+  ]
+}
