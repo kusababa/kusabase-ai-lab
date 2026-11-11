@@ -1,0 +1,51 @@
+{
+  "date": "2026-11-11",
+  "collected": 58,
+  "candidates": 7,
+  "draftsGenerated": 1,
+  "errors": [],
+  "items": [
+    {
+      "title": "Gemini 4 Carbon is now available",
+      "sourceName": "Google DeepMind",
+      "overallScore": 78,
+      "status": "draft_created"
+    },
+    {
+      "title": "Gemini Robotics 2.5 accelerates real-world general dexterity",
+      "sourceName": "Google DeepMind",
+      "overallScore": 76,
+      "status": "candidate"
+    },
+    {
+      "title": "The agent evaluation playbook: Built-in, DeepEval, and AutoEval on Amazon Bedrock AgentCore Evaluations",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 76,
+      "status": "candidate"
+    },
+    {
+      "title": "Google Cloud launches Gemini for healthcare.",
+      "sourceName": "Google AI",
+      "overallScore": 75,
+      "status": "candidate"
+    },
+    {
+      "title": "Introducing AlphaProof Code: a breakthrough in verifying complex software at depth",
+      "sourceName": "Google DeepMind",
+      "overallScore": 75,
+      "status": "candidate"
+    },
+    {
+      "title": "Build a daily dependency watcher with LangGraph and Amazon Bedrock AgentCore web search",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 75,
+      "status": "candidate"
+    },
+    {
+      "title": "How TCS built an agentic test orchestrator with Amazon Bedrock AgentCore",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 75,
+      "status": "candidate"
+    }
+  ]
+}
