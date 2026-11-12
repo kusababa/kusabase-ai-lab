@@ -1,0 +1,44 @@
+{
+  "date": "2026-11-12",
+  "collected": 75,
+  "candidates": 4,
+  "draftsGenerated": 0,
+  "errors": [
+    {
+      "step": "collect",
+      "sourceId": "deepmind-blog",
+      "message": "Non-whitespace before first tag.\nLine: 0\nColumn: 1\nChar: \u001f"
+    },
+    {
+      "step": "generate",
+      "sourceId": "google-ai-blog",
+      "message": "[Gemini Decisions API: Fast, calibrated multimodal decisions] Claudeの応答をJSONとして解析できませんでした: Unterminated string in JSON at position 977"
+    }
+  ],
+  "items": [
+    {
+      "title": "Gemini Decisions API: Fast, calibrated multimodal decisions",
+      "sourceName": "Google AI",
+      "overallScore": 82,
+      "status": "candidate"
+    },
+    {
+      "title": "UAEF: A framework-agnostic system for closed-loop evaluation of AI agents",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 78,
+      "status": "candidate"
+    },
+    {
+      "title": "Build autonomous AI agents with Amazon Bedrock and Spring AI",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 76,
+      "status": "candidate"
+    },
+    {
+      "title": "Automating AWS Agent Registry updates with push-based architecture",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 76,
+      "status": "candidate"
+    }
+  ]
+}
