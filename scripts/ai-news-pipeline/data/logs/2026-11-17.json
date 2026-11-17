@@ -1,0 +1,63 @@
+{
+  "date": "2026-11-17",
+  "collected": 43,
+  "candidates": 9,
+  "draftsGenerated": 1,
+  "errors": [],
+  "items": [
+    {
+      "title": "Advancing computer-use agents for healthcare teams",
+      "sourceName": "OpenAI",
+      "overallScore": 81,
+      "status": "draft_created"
+    },
+    {
+      "title": "More ways to move care forward with ChatGPT for Healthcare",
+      "sourceName": "OpenAI",
+      "overallScore": 79,
+      "status": "candidate"
+    },
+    {
+      "title": "How Duco transforms financial data automation with Amazon Bedrock AgentCore",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 78,
+      "status": "candidate"
+    },
+    {
+      "title": "Novo Nordisk modernizes manufacturing process documents with Amazon Bedrock AgentCore",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 78,
+      "status": "candidate"
+    },
+    {
+      "title": "Build memory-aware AI agents with Agentic Retrieve on Amazon Bedrock Managed Knowledge Base",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 76,
+      "status": "candidate"
+    },
+    {
+      "title": "Taxonomy of multi-agent design patterns, anti-patterns, and lessons from manufacturing",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 76,
+      "status": "candidate"
+    },
+    {
+      "title": "How MoEngage built agentic customer engagement on Amazon Bedrock AgentCore",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 76,
+      "status": "candidate"
+    },
+    {
+      "title": "Get answers from tables with tabular search in Amazon Bedrock Managed Knowledge Base",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 76,
+      "status": "candidate"
+    },
+    {
+      "title": "AI made integrations the vendor’s problem",
+      "sourceName": "n8n",
+      "overallScore": 75,
+      "status": "candidate"
+    }
+  ]
+}
