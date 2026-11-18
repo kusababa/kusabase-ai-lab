@@ -1,0 +1,51 @@
+{
+  "date": "2026-11-18",
+  "collected": 63,
+  "candidates": 7,
+  "draftsGenerated": 1,
+  "errors": [],
+  "items": [
+    {
+      "title": "Introducing GPT-6.2 Astra and Sol",
+      "sourceName": "OpenAI",
+      "overallScore": 82,
+      "status": "draft_created"
+    },
+    {
+      "title": "Responsible AI for agentic AI: A phased roadmap for platform and application teams",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 78,
+      "status": "candidate"
+    },
+    {
+      "title": "GPT‑6.2 Astra and GPT‑6.2 Sol",
+      "sourceName": "Simon Willison's Weblog",
+      "overallScore": 78,
+      "status": "candidate"
+    },
+    {
+      "title": "Reducing token costs and latency in Amazon Bedrock AgentCore JSON workloads",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 76,
+      "status": "candidate"
+    },
+    {
+      "title": "Govern and discover records with common metadata in AWS Agent Registry",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 76,
+      "status": "candidate"
+    },
+    {
+      "title": "Build WhatsApp AI agents with Amazon Bedrock AgentCore",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 75,
+      "status": "candidate"
+    },
+    {
+      "title": "External sandboxes for coding agents",
+      "sourceName": "Simon Willison's Weblog",
+      "overallScore": 75,
+      "status": "candidate"
+    }
+  ]
+}
