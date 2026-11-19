@@ -1,0 +1,45 @@
+{
+  "date": "2026-11-19",
+  "collected": 72,
+  "candidates": 6,
+  "draftsGenerated": 1,
+  "errors": [],
+  "items": [
+    {
+      "title": "Research acceleration: The jagged frontier",
+      "sourceName": "OpenAI",
+      "overallScore": 82,
+      "status": "draft_created"
+    },
+    {
+      "title": "Introducing Gemini 4 Neon",
+      "sourceName": "Google DeepMind",
+      "overallScore": 78,
+      "status": "candidate"
+    },
+    {
+      "title": "Inside the Codex sandbox",
+      "sourceName": "OpenAI",
+      "overallScore": 76,
+      "status": "candidate"
+    },
+    {
+      "title": "Genie 4 is now available",
+      "sourceName": "Google DeepMind",
+      "overallScore": 76,
+      "status": "candidate"
+    },
+    {
+      "title": "How Airbnb uses cost per task to operate coding agents on Amazon Bedrock",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 76,
+      "status": "candidate"
+    },
+    {
+      "title": "Connect Amazon Bedrock AgentCore Gateway to private APIs in a hub-and-spoke network with centralized inspection",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 76,
+      "status": "candidate"
+    }
+  ]
+}
