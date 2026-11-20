@@ -1,0 +1,39 @@
+{
+  "date": "2026-11-20",
+  "collected": 68,
+  "candidates": 5,
+  "draftsGenerated": 1,
+  "errors": [],
+  "items": [
+    {
+      "title": "Protect agent tool calls with Skyflow and Amazon Bedrock AgentCore Gateway",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 81,
+      "status": "draft_created"
+    },
+    {
+      "title": "Introducing Tool Retrieval in the Gemini API",
+      "sourceName": "Google AI",
+      "overallScore": 78,
+      "status": "candidate"
+    },
+    {
+      "title": "Amazon Bedrock AgentCore harness adds Strands harness defaults, built-in tools, and lifecycle hooks",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 78,
+      "status": "candidate"
+    },
+    {
+      "title": "Enable AI agents to pay for AWS Marketplace x402 products with Amazon Bedrock AgentCore payments",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 76,
+      "status": "candidate"
+    },
+    {
+      "title": "How the BMW Group governs hundreds of agents across thousands of developers",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 76,
+      "status": "candidate"
+    }
+  ]
+}
