@@ -1,0 +1,39 @@
+{
+  "date": "2026-11-21",
+  "collected": 63,
+  "candidates": 4,
+  "draftsGenerated": 1,
+  "errors": [
+    {
+      "step": "collect",
+      "sourceId": "deepmind-blog",
+      "message": "Non-whitespace before first tag.\nLine: 0\nColumn: 1\nChar: \u001f"
+    }
+  ],
+  "items": [
+    {
+      "title": "Cut self-hosted LLM cost and latency with the distributed KV caching agent skill",
+      "sourceName": "AWS Machine Learning Blog",
+      "overallScore": 76,
+      "status": "draft_created"
+    },
+    {
+      "title": "Token fraud is here and it’s BAD (YouTube)",
+      "sourceName": "Simon Willison's Weblog",
+      "overallScore": 76,
+      "status": "candidate"
+    },
+    {
+      "title": "Can AI help scientists identify promising drug candidates?",
+      "sourceName": "OpenAI",
+      "overallScore": 75,
+      "status": "candidate"
+    },
+    {
+      "title": "v2.1.330",
+      "sourceName": "Claude Code",
+      "overallScore": 75,
+      "status": "candidate"
+    }
+  ]
+}
