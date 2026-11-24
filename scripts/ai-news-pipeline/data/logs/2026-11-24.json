@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-24",
+  "collected": 28,
+  "candidates": 1,
+  "draftsGenerated": 1,
+  "errors": [
+    {
+      "step": "collect",
+      "sourceId": "deepmind-blog",
+      "message": "Non-whitespace before first tag.\nLine: 0\nColumn: 1\nChar: \u001f"
+    }
+  ],
+  "items": [
+    {
+      "title": "How to build and maintain an agentic evaluation",
+      "sourceName": "Hugging Face",
+      "overallScore": 75,
+      "status": "draft_created"
+    }
+  ]
+}
