@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-25",
+  "collected": 37,
+  "candidates": 2,
+  "draftsGenerated": 1,
+  "errors": [],
+  "items": [
+    {
+      "title": "GPT-6 models demonstrate intrinsic protein-design capabilities",
+      "sourceName": "OpenAI",
+      "overallScore": 85,
+      "status": "draft_created"
+    },
+    {
+      "title": "Production AI Playbook: Audit & trace for AI agents",
+      "sourceName": "n8n",
+      "overallScore": 76,
+      "status": "candidate"
+    }
+  ]
+}
