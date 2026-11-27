@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-27",
+  "collected": 32,
+  "candidates": 1,
+  "draftsGenerated": 1,
+  "errors": [
+    {
+      "step": "collect",
+      "sourceId": "deepmind-blog",
+      "message": "Non-whitespace before first tag.\nLine: 0\nColumn: 1\nChar: \u001f"
+    }
+  ],
+  "items": [
+    {
+      "title": "Swarms, Flocks, Gangs: How to build, train, and evaluate multi-agent systems",
+      "sourceName": "Hugging Face",
+      "overallScore": 81,
+      "status": "draft_created"
+    }
+  ]
+}
